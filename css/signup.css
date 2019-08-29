@@ -1,0 +1,40 @@
+@import url('../fonts/nanumgothic/nanumgothic.css');
+
+.signup__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup__header {
+    font-family: 'Nanum Gothic';
+}
+
+.signup__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup__form__input {
+    display: flex;
+    flex-direction: column;
+}
+
+.input__birth {
+    display: flex;
+    flex-direction: row;
+}
+
+.signup__form__conditions {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.signup__form__buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
