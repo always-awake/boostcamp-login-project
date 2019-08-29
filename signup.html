@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <script src="./js/signup.js"></script>
     <title>네이버 : 회원가입</title>
 </head>
 <body class="signup__body">
@@ -18,7 +19,7 @@
             <div class="signup__form__input">
                 <div class="input__name">아이디</div>
                 <div class="input__box">
-                    <input class="input__tag" type="text" name="user_id" />
+                    <input class="input__tag" id="user_id" type="text" name="user_id" maxlength="20" />
                 </div>
             </div>
             <div class="signup__form__input">
@@ -105,7 +106,7 @@
             </div>
             <div class="signup__form__buttons">
                 <button class="signup__button" type="button">초기화</button>
-                <button class="signup__button" type="button">가입하기</button>
+                <button class="signup__button" id="signup__button" type="button">가입하기</button>
             </div>
         </div>
     </section>
