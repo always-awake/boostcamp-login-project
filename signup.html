@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>네이버 : 회원가입</title>
+</head>
+<body>
+    <header>
+        <div class="header__title">
+        <h1 class="header__text">회원가입</h1>
+        </div>
+    </header>
+    <section>
+        <div class="signup__form">
+            <div class="signup__form__input">
+                <div class="input__tag">아이디</div>
+                <div class="input__box">
+                    <input type="text" name="user_id" />
+                </div>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">비밀번호</div>
+                <div class="input__box">
+                    <input type="password" name="password1" />
+                </div>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">비밀번호 재확인</div>
+                <div class="input__box">
+                    <input type="password" name="password2" />
+                </div>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">이름</div>
+                <div class="input__box">
+                    <input type="text" name="user_name" />
+                </div>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">생년월일</div>
+                <div class="input__birth">
+                    <div class="input__box__birth">
+                        <input type="number" value="user_birth_year" placeholder="년(4자)"/>
+                    </div>
+                    <div class="input__box__birth">
+                        <select class="birth__month">
+                            <option value="birth__month__default">월</option>
+                            <option value="month">1</option>
+                            <option value="month">2</option>
+                            <option value="month">3</option>
+                            <option value="month">4</option>
+                            <option value="month">5</option>
+                            <option value="month">6</option>
+                            <option value="month">7</option>
+                            <option value="month">8</option>
+                            <option value="month">9</option>
+                            <option value="month">10</option>
+                            <option value="month">11</option>
+                            <option value="month">12</option>
+                        </select>
+                    </div>
+                    <div class="input__box__birth">
+                        <input type="number" value="day" placeholder="일"/>
+                    </div>
+                </div>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">성별</div>
+                <select class="input__gender">
+                    <option value="gender__default">성별</option>
+                    <option value="gender">남자</option>
+                    <option value="gender">여</option>
+                </select>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">이메일</div>
+                <div class="input__box">
+                    <input type="email" name="user_email" />
+                </div>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">휴대전화</div>
+                <div class="input__box">
+                    <input type="tel" name="user_phonenumber" />
+                </div>
+            </div>
+            <div class="signup__form__input">
+                <div class="input__tag">관심사</div>
+                <div class="input__box">
+                    <input type="text" name="user_interest" />
+                </div>
+            </div>
+            <div class="signup__form__conditions">
+                <div class="conditions__text">약관에 동의합니다.</div>
+                <div class="input__box">
+                    <input type="checkbox" name="vehicle1" value="Bike">
+                </div>
+            </div>
+        </div>
+        <div class="signup__buttons">
+            <button class="signup__button" type="button">초기화</button>
+            <button class="signup__button" type="button">가입하기</button>
+        </div>
+    </section>
+</body>
+</html>
