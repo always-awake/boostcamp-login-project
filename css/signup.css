@@ -1,13 +1,27 @@
 @import url('../fonts/nanumgothic/nanumgothic.css');
 
+* {
+    font-family: 'Nanum Gothic';
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .signup__body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    background-color: #F5F6F7;
 }
 
 .signup__header {
-    font-family: 'Nanum Gothic';
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: #2CB400;
 }
 
 .signup__section {
@@ -16,25 +30,116 @@
     justify-content: center;
 }
 
+.signup__form__input .input__name {
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 .signup__form__input {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.signup__form__input .input__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 460px;
+    height: 50px;
+
+    border: 1px solid #DADADA;
+    background-color: #FFFFFF;
+}
+
+.signup__form__input .input__box .input__tag {
+    width: 430px;
+    height: 30px;
+    border:none;
+}
+
+.signup__form__input .input__box__birth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 146px;
+    height: 50px;
+
+    border: 1px solid #DADADA;
+    background-color: #FFFFFF;
+}
+
+.signup__form__input .input__birth .input__tag__birth {
+    width: 120px;
+    height: 30px;
+    border:none;
+    font-size: 14px;
+}
+
+
+.signup__form__input .input__box__birth .birth__month {
+    width: 120px;
+    height: 30px;
+    border:none;
+    -webkit-appearance: none;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    background: url('../images/drop_down_button.svg') no-repeat 95% 50%;
+    background-size: 13px;
 }
 
 .input__birth {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.signup__form__input .input__gender {
+    width: 430px;
+    height: 30px;
+    border:none;
+    -webkit-appearance: none;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    background: url('../images/drop_down_button.svg') no-repeat 98% 50%;
+    background-size: 13px;
 }
 
 .signup__form__conditions {
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
+}
 
+.signup__form__conditions .conditions__text {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.signup__form__conditions .input__box .condition__checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #bcbcbc;
 }
 
 .signup__form__buttons {
     display: flex;
-    justify-content: center;
     flex-direction: row;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
 
+.signup__form__buttons .signup__button {
+    background-color: #2CB400; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 19px;
+
+    width: 223px;
+    height: 62px;
 }
