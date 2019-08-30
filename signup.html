@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <script src="./js/signup.js"></script>
+    <script src="./js/signup.js" type="module"></script>
     <title>네이버 : 회원가입</title>
 </head>
 <body class="signup__body">
@@ -16,29 +16,33 @@
     </header>
     <section class="signup__section">
         <div class="signup__form">
-            <div class="signup__form__input">
+            <div class="signup__form__input" id="user_id_input_box">
                 <div class="input__name">아이디</div>
                 <div class="input__box">
-                    <input class="input__tag" id="user_id" type="text" name="user_id" maxlength="20" />
+                    <input class="input__tag" id="user_id_input" type="text" maxlength="20" />
                 </div>
+                <div class ="validation__message" id="user_id_msg"></div>
             </div>
             <div class="signup__form__input">
-                <div class="input__name">비밀번호</div>
+                <div class="input__name" id="user_pw_input_box">비밀번호</div>
                 <div class="input__box">
-                    <input class="input__tag" type="text" name="password1" />
+                    <input class="input__tag" id="user_pw_input" type="text" />
                 </div>
+                <div class ="validation__message" id="user_password_msg"></div>
             </div>
             <div class="signup__form__input">
                 <div class="input__name">비밀번호 재확인</div>
                 <div class="input__box">
                     <input class="input__tag" type="text" name="password2" />
                 </div>
+                <div class ="validation__message" id="user_re_password_msg"></div>
             </div>
             <div class="signup__form__input">
                 <div class="input__name">이름</div>
                 <div class="input__box">
                     <input class="input__tag" type="text" name="user_name" />
                 </div>
+                <div class ="validation__message" id="user_name_msg"></div>
             </div>
             <div class="signup__form__input">
                 <div class="input__name">생년월일</div>
@@ -67,6 +71,7 @@
                         <input class="input__tag__birth" type="text" name="day" placeholder="일"/>
                     </div>
                 </div>
+                <div class ="validation__message" id="user_birth_msg"></div>
             </div>
             <div class="signup__form__input">
                 <div class="input__name">성별</div>
@@ -77,24 +82,28 @@
                         <option value="gender">여</option>
                     </select>
                 </div>
+                <div class ="validation__message" id="user_gener_msg"></div>
             </div>
             <div class="signup__form__input">
                 <div class="input__name">이메일</div>
                 <div class="input__box">
                     <input class="input__tag" type="text" name="user_email" />
                 </div>
+                <div class ="validation__message" id="user_email_msg"></div>
             </div>
             <div class="signup__form__input">
                 <div class="input__name">휴대전화</div>
                 <div class="input__box">
-                    <input class="input__tag" type="text" name="user_phonenumber" />
+                    <input class="input__tag" type="text" name="user_phonenumber" placeholder="- 없이 입력해주세요. 예) 0101231234"/>
                 </div>
+                <div class ="validation__message" id="user_phone_msg"></div>
             </div>
             <div class="signup__form__input">
                 <div class="input__name">관심사</div>
                 <div class="input__box">
                     <input class="input__tag" type="text" name="user_interest" />
                 </div>
+                <div class ="validation__message" id="user_interest_msg"></div>
             </div>
             <div class="signup__form__conditions">
                 <div class="conditions__text">
