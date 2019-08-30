@@ -44,9 +44,19 @@ const checkPwSameness = (oldPw, newPw) => {
     }
 };
 
+const checkEmailValidation = (email) => {
+    const emailCheckResult = REG_EXR['EMAIL_CHECK'].test(email);
+    if (!emailCheckResult) {
+        return {
+            result: false,
+            error_obj: ERROR['EMAIL_STRUCTURE_ERROR']
+        }
+    }
+};
+
 export default {
     checkIdValidation,
     checkPwValidation,
-    checkPwSameness
-
+    checkPwSameness,
+    checkEmailValidation,
 }

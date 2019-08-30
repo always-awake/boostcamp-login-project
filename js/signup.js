@@ -31,6 +31,7 @@ window.onload = function() {
         }
     });
 
+    // check old, new password sameness
     document.getElementById('user_re_pw_input').addEventListener('focusout', () => {
         const userRePwMsgDiv = document.getElementById('user_re_password_msg');
         const userOldPw = document.getElementById('user_pw_input').value;
@@ -39,10 +40,26 @@ window.onload = function() {
 
         if (validation_obj['result']) {
             console.log(`${validation_obj['pass_obj']['status']}`);
-            userRePwMsgDiv .textContent = `${validation_obj['pass_obj']['msg']}`;
+            userRePwMsgDiv.textContent = `${validation_obj['pass_obj']['msg']}`;
         } else {
             console.log(`${validation_obj['error_obj']['status']}`);
-            userRePwMsgDiv .textContent = `${validation_obj['error_obj']['msg']}`;
+            userRePwMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+        }
+    });
+
+    // email validation
+    document.getElementById('user_email_input').addEventListener('focusout', () => {
+
+        const requestUserEmail = document.getElementById('user_email_input').value;
+        const userEmailMsgDiv = document.getElementById('user_email_msg');
+        const validation_obj = validator.checkEmailValidation(requestUserEmail);
+        console.log(validation_obj)
+
+        if (validation_obj === undefined) {
+            userEmailMsgDiv.textContent = '';
+        } else if (!validation_obj['result']) {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userEmailMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
         }
     });
 
