@@ -1,42 +1,11 @@
-import { ERROR, PASS, REG_EXR } from './utils.js';
+import validator from './validators.js';
 
-
-const checkIdValidation = (id) => {
-    const idCheckResult = REG_EXR['ID_CHECK'].test(id);
-    if (!idCheckResult) {
-        return {
-            result: false,
-            error_obj: ERROR['NEW_ID_STRUCTURE_ERROR']
-        }
-    } else {
-        return {
-            result: true,
-            pass_obj: PASS['ID_VALID']
-        }
-    }
-};
-
-const checkPwValidation = (pw) => {
-    const pwCheckResult = REG_EXR['PASSWORD_CHECK'].test(pw);
-    if (!pwCheckResult) {
-        return {
-            result: false,
-            error_obj: ERROR['PASSWORD_STRUCTURE_ERROR']
-        }
-    } else {
-        return {
-            result:true,
-            pass_obj: PASS['PASSWORD_VALID']
-        }
-    }
-};
-
-window.onload = () => {
+window.onload = function() {
     // id validation
     document.getElementById('user_id_input').addEventListener('focusout', () => {
         const requestUserId = document.getElementById('user_id_input').value;
         const userIdMsgDiv = document.getElementById('user_id_msg');
-        const validation_obj = checkIdValidation(requestUserId);
+        const validation_obj = validator.checkIdValidation(requestUserId);
 
         if (validation_obj['result']) {
             console.log(`${validation_obj['pass_obj']['status']}`);
@@ -51,7 +20,7 @@ window.onload = () => {
     document.getElementById('user_pw_input').addEventListener('focusout', () => {
         const requestUserPw = document.getElementById('user_pw_input').value;
         const userPwMsgDiv = document.getElementById('user_password_msg');
-        const validation_obj = checkPwValidation(requestUserPw);
+        const validation_obj = validator.checkPwValidation(requestUserPw);
 
         if (validation_obj['result']) {
             console.log(`${validation_obj['pass_obj']['status']}`);
@@ -62,17 +31,19 @@ window.onload = () => {
         }
     });
 
-    document.getElementById('signup__button').addEventListener('click', () => {
+    document.getElementById('user_re_pw_input').addEventListener('focusout', () => {
+        const userRePwMsgDiv = document.getElementById('user_re_password_msg');
+        const userOldPw = document.getElementById('user_pw_input').value;
+        const userNewPw = document.getElementById('user_re_pw_input').value;
+        const validation_obj = validator.checkPwSameness(userOldPw, userNewPw);
+
+        if (validation_obj['result']) {
+            console.log(`${validation_obj['pass_obj']['status']}`);
+            userRePwMsgDiv .textContent = `${validation_obj['pass_obj']['msg']}`;
+        } else {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userRePwMsgDiv .textContent = `${validation_obj['error_obj']['msg']}`;
+        }
     });
+
 };
-
-
-function addRow() {
-
-
-
-}
-
-function removeRow(input) {
-    document.getElementById('content').removeChild(input.parentNode);
-}
