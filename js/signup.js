@@ -16,6 +16,20 @@ const checkIdValidation = (id) => {
     }
 };
 
+const checkPwValidation = (pw) => {
+    const pwCheckResult = REG_EXR['PASSWORD_CHECK'].test(pw);
+    if (!pwCheckResult) {
+        return {
+            result: false,
+            error_obj: ERROR['PASSWORD_STRUCTURE_ERROR']
+        }
+    } else {
+        return {
+            result:true,
+            pass_obj: PASS['PASSWORD_VALID']
+        }
+    }
+};
 
 window.onload = () => {
     // id validation
@@ -33,6 +47,20 @@ window.onload = () => {
         }
     });
 
+    // password validation
+    document.getElementById('user_pw_input').addEventListener('focusout', () => {
+        const requestUserPw = document.getElementById('user_pw_input').value;
+        const userPwMsgDiv = document.getElementById('user_password_msg');
+        const validation_obj = checkPwValidation(requestUserPw);
+
+        if (validation_obj['result']) {
+            console.log(`${validation_obj['pass_obj']['status']}`);
+            userPwMsgDiv .textContent = `${validation_obj['pass_obj']['msg']}`;
+        } else {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userPwMsgDiv .textContent = `${validation_obj['error_obj']['msg']}`;
+        }
+    });
 
     document.getElementById('signup__button').addEventListener('click', () => {
     });
