@@ -97,4 +97,22 @@ window.onload = function() {
         document.getElementById('user_phone_input').parentElement.className = 'input__box';
     });
 
+    //name
+    document.getElementById('user_name_input').addEventListener('focusin', () => {
+        document.getElementById('user_name_input').parentElement.className = 'input__box__checked';
+    });
+    document.getElementById('user_name_input').addEventListener('focusout', () => {
+        document.getElementById('user_name_input').parentElement.className = 'input__box';
+    });
+
+    // birth
+
+    // gender
+    document.getElementById('user_gender_select').addEventListener('focusin', () => {
+        document.getElementById('user_gender_select').parentElement.className = 'input__box__checked';
+    });
+    document.getElementById('user_gender_select').addEventListener('focusout', () => {
+        document.getElementById('user_gender_select').parentElement.className = 'input__box';
+    });
+
 };

@@ -40,7 +40,7 @@
             <div class="signup__form__input">
                 <div class="input__name">이름</div>
                 <div class="input__box">
-                    <input class="input__tag" type="text" name="user_name" />
+                    <input class="input__tag" id="user_name_input" type="text" />
                 </div>
                 <div class ="validation__message" id="user_name_msg"></div>
             </div>
@@ -76,8 +76,8 @@
             <div class="signup__form__input">
                 <div class="input__name">성별</div>
                 <div class="input__box">
-                    <select class="input__gender">
-                        <option value="gender__default">성별</option>
+                    <select class="input__gender" id="user_gender_select">
+                        <option value selected>성별</option>
                         <option value="gender">남자</option>
                         <option value="gender">여</option>
                     </select>
@@ -94,7 +94,7 @@
             <div class="signup__form__input">
                 <div class="input__name">휴대전화</div>
                 <div class="input__box">
-                    <input class="input__tag" type="text" name="user_phonenumber" placeholder="- 없이 입력해주세요. 예) 0101231234"/>
+                    <input class="input__tag" id="user_phone_input" type="text" placeholder="- 없이 입력해주세요. 예) 0101231234"/>
                 </div>
                 <div class ="validation__message" id="user_phone_msg"></div>
             </div>
