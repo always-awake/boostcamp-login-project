@@ -1,34 +1,66 @@
-const ERROR = {
-    NEW_ID_STRUCTURE_ERROR: {
-        status: 'Wrong New User ID Structure Error',
-        msg:'5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.'
-    },
-    NEW_ID_REDUPLICATION_ERROR: {
-        status: 'Id Reduplication Error',
-        msg: '이미 사용중이거나 탈퇴한 아이디입니다.'
-    },
-    PASSWORD_STRUCTURE_ERROR: {
-        status: 'Wrong Password Structure Error',
-        msg: '8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.'
-    },
-    RE_PASSWORD_DISCORDANCE_ERROR: {
-        status: 'Re-entered Password Discordance Error',
-        msg: '비밀번호가 일치하지 않습니다.'
-    },
-    MISSING_REQUIRE_INFO_ERROR: {
-        status: 'Missing Required Information Error',
-        msg: '필수 정보입니다.'
-    },
-};
+import validator from './validators.js';
 
-const checkUserIdValidation = (userId) => {
-};
+window.onload = function() {
+    // id validation
+    document.getElementById('user_id_input').addEventListener('focusout', () => {
+        const requestUserId = document.getElementById('user_id_input').value;
+        const userIdMsgDiv = document.getElementById('user_id_msg');
+        const validation_obj = validator.checkIdValidation(requestUserId);
 
-window.onload=function(){
-    document.getElementById('user_id').addEventListener('focusout', () => {
-        const requestUserId = document.getElementById('user_id').value;
-        checkUserIdValidation(requestUserId)
+        if (validation_obj['result']) {
+            console.log(`${validation_obj['pass_obj']['status']}`);
+            userIdMsgDiv.textContent = `${validation_obj['pass_obj']['msg']}`;
+        } else {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userIdMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+        }
     });
-    document.getElementById('signup__button').addEventListener('click', () => {
+
+    // password validation
+    document.getElementById('user_pw_input').addEventListener('focusout', () => {
+        const requestUserPw = document.getElementById('user_pw_input').value;
+        const userPwMsgDiv = document.getElementById('user_password_msg');
+        const validation_obj = validator.checkPwValidation(requestUserPw);
+
+        if (validation_obj['result']) {
+            console.log(`${validation_obj['pass_obj']['status']}`);
+            userPwMsgDiv .textContent = `${validation_obj['pass_obj']['msg']}`;
+        } else {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userPwMsgDiv .textContent = `${validation_obj['error_obj']['msg']}`;
+        }
     });
+
+    // check old, new password sameness
+    document.getElementById('user_re_pw_input').addEventListener('focusout', () => {
+        const userRePwMsgDiv = document.getElementById('user_re_password_msg');
+        const userOldPw = document.getElementById('user_pw_input').value;
+        const userNewPw = document.getElementById('user_re_pw_input').value;
+        const validation_obj = validator.checkPwSameness(userOldPw, userNewPw);
+
+        if (validation_obj['result']) {
+            console.log(`${validation_obj['pass_obj']['status']}`);
+            userRePwMsgDiv.textContent = `${validation_obj['pass_obj']['msg']}`;
+        } else {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userRePwMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+        }
+    });
+
+    // email validation
+    document.getElementById('user_email_input').addEventListener('focusout', () => {
+
+        const requestUserEmail = document.getElementById('user_email_input').value;
+        const userEmailMsgDiv = document.getElementById('user_email_msg');
+        const validation_obj = validator.checkEmailValidation(requestUserEmail);
+        console.log(validation_obj)
+
+        if (validation_obj === undefined) {
+            userEmailMsgDiv.textContent = '';
+        } else if (!validation_obj['result']) {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userEmailMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+        }
+    });
+
 };

@@ -4,12 +4,6 @@
     font-family: 'Nanum Gothic';
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
 .signup__body {
     display: flex;
     flex-direction: column;
@@ -31,15 +25,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .signup__form__input .input__name {
-    margin-bottom: 10px;
     font-size: 13px;
     font-weight: bold;
+    margin: 5px 0 8px;
 }
 
 .signup__form__input {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+}
+.validation__message {
+    width: 462px;
+    height: 20px;
+    font-size: 12px;
+    margin: 9px 0 -2px;
 }
 
 .signup__form__input .input__box {
@@ -57,6 +56,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 430px;
     height: 30px;
     border:none;
+    font-size: 14px;
 }
 
 .signup__form__input .input__box__birth {
