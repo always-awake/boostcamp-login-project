@@ -54,9 +54,20 @@ const checkEmailValidation = (email) => {
     }
 };
 
+const checkPhoneValidation = (phone) => {
+    const phoneCheckResult = REG_EXR['PHONE_CHECK'].test(phone);
+    if (!phoneCheckResult) {
+        return {
+            result: false,
+            error_obj: ERROR['PHONE_STRUCTURE_ERROR']
+        }
+    }
+};
+
 export default {
     checkIdValidation,
     checkPwValidation,
     checkPwSameness,
     checkEmailValidation,
+    checkPhoneValidation
 }

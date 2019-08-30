@@ -48,7 +48,7 @@ const PASS = {
     },
     RE_PASSWORD_SAME: {
         msg: '비밀번호가 일치합니다.'
-    }
+    },
 };
 
 const REG_EXR = {
