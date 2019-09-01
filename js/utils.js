@@ -55,7 +55,7 @@ const REG_EXR = {
     ID_CHECK: /^[0-9a-zA-z_-]{5,20}$/,
     PASSWORD_CHECK: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*+=_~-]).{8,16}$/,
     EMAIL_CHECK: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
-    PHONE_CHECK: /^010\d{7,8}$/,
+    PHONE_CHECK: /^(^010)([0-9]{7,8})$/,
 };
 
 export {
