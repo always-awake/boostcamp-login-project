@@ -34,6 +34,8 @@
     display: flex;
     flex-direction: column;
 }
+
+
 .validation__message {
     width: 462px;
     height: 20px;
@@ -68,6 +70,10 @@
     height: 30px;
     border:none;
     font-size: 14px;
+}
+
+.input__tag:focus {
+    outline:none;
 }
 
 .signup__form__input .input__box__birth {
@@ -144,7 +150,7 @@
 }
 
 .signup__form__buttons .signup__button {
-    background-color: #2CB400; /* Green */
+    background-color: #2CB400;
     border: none;
     color: white;
     text-align: center;
@@ -154,3 +160,106 @@
     width: 223px;
     height: 62px;
 }
+
+.contract__modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: red; !* Fallback color *!*/
+    background-color: rgba(0,0,0,0.3);
+    padding-top: 5%;
+}
+
+.contract__modal__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    border: 1px solid #bcbcbc;
+    width: 600px;
+    height: 590px;
+}
+
+.contract__modal__content .contract {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* The Close Button */
+.contract__close {
+    color: #bcbcbc;
+    width: 95%;
+    font-size: 25px;
+    text-align: right;
+}
+
+.contract__close:hover,
+.contract__close:focus {
+    color: #2CB400;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contract__title {
+    font-size: 16px;
+    width: 460px;
+    height: 16px;
+    margin-bottom: 15px;
+    font-weight: bolder;
+}
+
+::-webkit-scrollbar{width: 8px;}
+::-webkit-scrollbar-track {background-color:#F5F6F7;}
+::-webkit-scrollbar-thumb {background-color:#bcbcbc;border-radius: 10px; width: 8px;}
+::-webkit-scrollbar-thumb:hover {background: #828282;}
+
+.contract__text {
+    padding: 15px 15px 15px 15px;
+    border: 1px solid #bcbcbc;
+    font-size: 13px;
+    overflow: scroll;
+    width: 460px;
+    height: 400px;
+    color: #666666;
+    overflow-x: hidden;
+}
+
+.contract__agree__button {
+    background-color: #DADADA;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 19px;
+
+    width: 150px;
+    height: 50px;
+    margin-top: 16px;
+}
+
+.contract__agree__button__activate {
+    background-color: #2CB400;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 19px;
+
+    width: 150px;
+    height: 50px;
+    margin-top: 16px;
+}
+
+.contract__agree__button__activate:hover,
+.contract__agree__button__activate:focus {
+    cursor: pointer;
+}
+

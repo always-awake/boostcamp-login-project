@@ -1,7 +1,6 @@
 import validator from './validators.js';
 
 window.onload = function() {
-
     document.getElementById('user_id_input').addEventListener('focusin', () => {
         document.getElementById('user_id_input').parentElement.className = 'input__box__checked';
     });
@@ -11,12 +10,18 @@ window.onload = function() {
         const userIdMsgDiv = document.getElementById('user_id_msg');
         const validation_obj = validator.checkIdValidation(requestUserId);
 
-        if (validation_obj['result']) {
+        if (validation_obj['result'] === null){
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userIdMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userIdMsgDiv.style.color = '#FF0000';
+        } else if (validation_obj['result']) {
             console.log(`${validation_obj['pass_obj']['status']}`);
             userIdMsgDiv.textContent = `${validation_obj['pass_obj']['msg']}`;
+            userIdMsgDiv.style.color = '#2CB400';
         } else {
             console.log(`${validation_obj['error_obj']['status']}`);
             userIdMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userIdMsgDiv.style.color = '#FF0000';
         }
         document.getElementById('user_id_input').parentElement.className = 'input__box';
     });
@@ -29,13 +34,18 @@ window.onload = function() {
         const requestUserPw = document.getElementById('user_pw_input').value;
         const userPwMsgDiv = document.getElementById('user_password_msg');
         const validation_obj = validator.checkPwValidation(requestUserPw);
-
-        if (validation_obj['result']) {
+        if (validation_obj['result'] === null){
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userPwMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userPwMsgDiv.style.color = '#FF0000';
+        } else if (validation_obj['result']) {
             console.log(`${validation_obj['pass_obj']['status']}`);
-            userPwMsgDiv .textContent = `${validation_obj['pass_obj']['msg']}`;
+            userPwMsgDiv.textContent = `${validation_obj['pass_obj']['msg']}`;
+            userPwMsgDiv.style.color = '#2CB400';
         } else {
             console.log(`${validation_obj['error_obj']['status']}`);
-            userPwMsgDiv .textContent = `${validation_obj['error_obj']['msg']}`;
+            userPwMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userPwMsgDiv.style.color = '#FF0000';
         }
         document.getElementById('user_pw_input').parentElement.className = 'input__box';
     });
@@ -50,12 +60,18 @@ window.onload = function() {
         const userNewPw = document.getElementById('user_re_pw_input').value;
         const validation_obj = validator.checkPwSameness(userOldPw, userNewPw);
 
-        if (validation_obj['result']) {
+        if (validation_obj['result'] === null){
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userRePwMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userRePwMsgDiv.style.color = '#FF0000';
+        } else if (validation_obj['result']) {
             console.log(`${validation_obj['pass_obj']['status']}`);
             userRePwMsgDiv.textContent = `${validation_obj['pass_obj']['msg']}`;
+            userRePwMsgDiv.style.color = '#2CB400';
         } else {
             console.log(`${validation_obj['error_obj']['status']}`);
             userRePwMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userRePwMsgDiv.style.color = '#FF0000';
         }
         document.getElementById('user_re_pw_input').parentElement.className = 'input__box';
     });
@@ -71,9 +87,14 @@ window.onload = function() {
 
         if (validation_obj === undefined) {
             userEmailMsgDiv.textContent = '';
+        } else if (validation_obj['result'] === null){
+                console.log(`${validation_obj['error_obj']['status']}`);
+                userEmailMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+                userEmailMsgDiv.style.color = '#FF0000';
         } else if (!validation_obj['result']) {
             console.log(`${validation_obj['error_obj']['status']}`);
             userEmailMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userEmailMsgDiv.style.color = '#FF0000';
         }
         document.getElementById('user_email_input').parentElement.className = 'input__box';
     });
@@ -90,9 +111,14 @@ window.onload = function() {
 
         if (validation_obj === undefined) {
             userPhoneMsgDiv.textContent = '';
+        } else if (validation_obj['result'] === null){
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userPhoneMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userPhoneMsgDiv.style.color = '#FF0000';
         } else if (!validation_obj['result']) {
             console.log(`${validation_obj['error_obj']['status']}`);
             userPhoneMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userPhoneMsgDiv.style.color = '#FF0000';
         }
         document.getElementById('user_phone_input').parentElement.className = 'input__box';
     });
@@ -114,5 +140,44 @@ window.onload = function() {
     document.getElementById('user_gender_select').addEventListener('focusout', () => {
         document.getElementById('user_gender_select').parentElement.className = 'input__box';
     });
+
+    // interest
+    document.getElementById('user_interest_input').addEventListener('focusin', () => {
+        document.getElementById('user_interest_input').parentElement.className = 'input__box__checked';
+    });
+    document.getElementById('user_interest_input').addEventListener('focusout', () => {
+        document.getElementById('user_interest_input').parentElement.className = 'input__box';
+    });
+
+    // contract
+    const contractCheckbox = document.getElementById('user_contract_checkbox');
+    const contractModal = document.getElementById('myModal');
+    const closeBtn = document.getElementsByClassName('contract__close')[0];
+    const contractAgreeBtn = document.getElementsByClassName('contract__agree__button')[0];
+    const contractText = document.getElementsByClassName('contract__text')[0];
+
+    contractCheckbox .addEventListener('click', () => {
+        contractCheckbox.checked = false;
+        contractModal.style.display = 'block';
+    });
+    closeBtn.addEventListener('click', () => {
+            contractModal.style.display = 'none';
+    });
+    window.addEventListener('click', (event) => {
+        if (event.target === contractModal) contractModal.style.display = 'none';
+    });
+    contractAgreeBtn.disabled = true;
+    contractText.addEventListener('scroll', (event) => {
+        const contractText = event.target;
+        if (contractText.scrollHeight - contractText.scrollTop === contractText.clientHeight) {
+            contractAgreeBtn.disabled = false;
+            contractAgreeBtn.className = 'contract__agree__button__activate';
+        }
+    });
+    contractAgreeBtn.addEventListener('click', () => {
+        contractModal.style.display = 'none';
+        contractCheckbox.checked = true;
+        contractCheckbox.disabled = true;
+    })
 
 };
