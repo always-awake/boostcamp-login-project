@@ -126,8 +126,6 @@ window.onload = function() {
         document.getElementById('user_phone_input').parentElement.className = 'input__box';
     });
 
-
-
     //name
     document.getElementById('user_name_input').addEventListener('focusin', () => {
         document.getElementById('user_name_input').parentElement.className = 'input__box__checked';
@@ -138,28 +136,85 @@ window.onload = function() {
 
     // birth
     const birthYearInput = document.getElementById('user_birth_year_input');
+    const birthMonthInput = document.getElementById('user_birth_month_input');
+    const birthDayInput = document.getElementById('user_birth_day_input');
+    const userBirthMsgDiv = document.getElementById('user_birth_msg');
+
+
+
+
     birthYearInput.addEventListener('focusin', () => {
         birthYearInput.parentElement.className = 'input__box__birth__checked';
     });
     birthYearInput.addEventListener('focusout', () => {
+        const requestUserBirthYear = birthYearInput.value;
+        const validation_obj = validator.checkBirthYearValidation(requestUserBirthYear);
+        if (validation_obj === undefined) {
+            userBirthMsgDiv.textContent = '';
+            birthMonthInput.disabled = false;
+            birthDayInput.disabled = false;
+        } else if (validation_obj['result'] === 'structure_error'){
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userBirthMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            birthMonthInput.disabled = true;
+            birthDayInput.disabled = true;
+            userBirthMsgDiv.style.color = '#FF0000';
+        } else if (validation_obj['result'] === 'restrict_error') {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userBirthMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userBirthMsgDiv.style.color = '#FF0000';
+            birthMonthInput.disabled = true;
+            birthDayInput.disabled = true;
+        }
         birthYearInput.parentElement.className = 'input__box__birth';
     });
 
-    const birthMonthInput = document.getElementById('user_birth_month_input');
+    // month
     birthMonthInput.addEventListener('focusin', () => {
         birthMonthInput.parentElement.className = 'input__box__birth__checked';
+        if (birthYearInput.value === '') {
+            const validation_obj = validator.checkBirthYearValidation('');
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userBirthMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userBirthMsgDiv.style.color = '#FF0000';
+        }
     });
     birthMonthInput.addEventListener('focusout', () => {
         birthMonthInput.parentElement.className = 'input__box__birth';
     });
 
-    const birthDayInput = document.getElementById('user_birth_day_input');
+    // day
     birthDayInput.addEventListener('focusin', () => {
+        if (birthYearInput.value === '') {
+            const validation_obj = validator.checkBirthYearValidation('');
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userBirthMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userBirthMsgDiv.style.color = '#FF0000';
+        }
         birthDayInput.parentElement.className = 'input__box__birth__checked';
     });
     birthDayInput.addEventListener('focusout', () => {
+        const requestUserBirthYear = birthYearInput.value;
+        const requestUserBirthMonth = birthMonthInput.value;
+        const requestUserBirthDay = birthDayInput.value;
+        const validation_obj = validator.checkBirthDayValidation(
+            requestUserBirthYear,
+            requestUserBirthMonth,
+            requestUserBirthDay,
+        );
+        if (validation_obj === undefined) {
+            userBirthMsgDiv.textContent = '';
+        } else if (!validation_obj['result']) {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userBirthMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userBirthMsgDiv.style.color = '#FF0000';
+        }
         birthDayInput.parentElement.className = 'input__box__birth';
     });
+
+
+
+
 
     // gender
     document.getElementById('user_gender_select').addEventListener('focusin', () => {

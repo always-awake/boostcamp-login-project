@@ -24,6 +24,14 @@ const ERROR = {
       status: 'Wrong Birth Year Structure Error (four-digit number)',
       msg: '태어난 년도 4자리를 정확하게 입력하세요.'
     },
+    BIRTH_YEAR_RESTRICT_ERROR: {
+      status:'Should Older Than 15',
+      msg: '만 14세 미만의 어린이는 보호자 동의가 필요합니다.'
+    },
+    BIRTH_MONTH_DAY_STRUCTURE_ERROR: {
+        status: 'Wrong Birth Month Or Day Structure Error',
+        msg: '생년월일을 다시 확인해주세요.'
+    },
     EMAIL_STRUCTURE_ERROR: {
         status: 'Wrong Email Structure Error (ex: check "@")',
         msg: '이메일 주소를 다시 확인해주세요.'
@@ -41,12 +49,15 @@ const ERROR = {
 const PASS = {
     VALID_MESSAGE_COLOR: '#09A600',
     ID_VALID: {
+        status: 'Valid Id',
         msg: '멋진 아이디네요!',
     },
     PASSWORD_VALID: {
+        status: 'Safe Password',
         msg: '안전한 비밀번호입니다.'
     },
     RE_PASSWORD_SAME: {
+        status: 'Same Password',
         msg: '비밀번호가 일치합니다.'
     },
 };

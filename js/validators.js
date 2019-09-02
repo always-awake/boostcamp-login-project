@@ -114,11 +114,43 @@ const checkInterestCount = (interests) => {
     }
 };
 
+const checkBirthYearValidation = (year) => {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const possibleYoung = currentYear - 14;
+    const possibleOld = currentYear - 98;
+
+    if (possibleYoung < year) {
+        return {
+            result: 'restrict_error',
+            error_obj: ERROR['BIRTH_YEAR_RESTRICT_ERROR']
+        }
+    } else if (year < possibleOld || year.length !== 4) {
+        return {
+            result: 'structure_error',
+            error_obj: ERROR['BIRTH_YEAR_STRUCTURE_ERROR']
+        }
+    }
+};
+
+const checkBirthDayValidation = (year, month, day) => {
+    const possibleLastDay = new Date(year, month, 0).getDate();
+    if (day < 1 || day > possibleLastDay || month === 'birth_month_default') {
+        return {
+            result: false,
+            error_obj: ERROR['BIRTH_MONTH_DAY_STRUCTURE_ERROR']
+        }
+    }
+};
+
+
 export default {
     checkIdValidation,
     checkPwValidation,
     checkPwSameness,
     checkEmailValidation,
     checkPhoneValidation,
-    checkInterestCount
+    checkInterestCount,
+    checkBirthYearValidation,
+    checkBirthDayValidation
 }

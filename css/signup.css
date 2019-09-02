@@ -367,4 +367,5 @@
 
 .interest__tag__close__button:hover {
     cursor: pointer;
+    background-color: #CDCDCD;
 }
