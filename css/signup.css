@@ -49,7 +49,6 @@
     align-items: center;
     width: 460px;
     height: 50px;
-
     border: 1px solid #DADADA;
     background-color: #FFFFFF;
 }
@@ -267,10 +266,13 @@
     display: flex;
     align-items: center;
     width: 460px;
-    height: 50px;
-
+    min-height: 50px;
     border: 1px solid #DADADA;
     background-color: #FFFFFF;
+    flex-flow: wrap;
+    flex-direction: row;
+    align-content: center;
+
 }
 
 .input__box__interest .input__interest {
@@ -285,8 +287,11 @@
 
 .input__box__interest .interest__tags {
     display: flex;
-    flex-direction: row;
-    padding-left: 15px;
+    flex-flow: wrap;
+    /*flex-direction: row;*/
+    /*padding-left: 15px;*/
+    margin-right: 8px;
+    margin-left: 8px;
 }
 
 .input__box__interest .interest__tags .interest__tag {
@@ -299,14 +304,18 @@
     font-size: 14px;
     border-radius: 5px;
     margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding-left: 5px;
+    border: 1px solid #DADADA;
+
 }
 
 .input__box__interest .input__tag__interest {
-    width: auto;
     height: 30px;
     border:none;
     font-size: 14px;
+    margin-top: 5px;
 }
 
 .input__box__interest .input__tag__interest:focus {
@@ -322,7 +331,7 @@
     width: 20px;
     height: 20px;
     margin-right: 5px;
-    border: 0.5px solid #B7B7B7;
+    border: 1px solid #B7B7B7;
     border-radius: 50%;
 }
 

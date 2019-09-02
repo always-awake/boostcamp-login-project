@@ -157,82 +157,84 @@ window.onload = function() {
 
     //
     // });
-    const userInterests = [];
-    let interestCount = 0;
-    const interestInputDiv = document.getElementById('user_interest_input');
-    const interestTagDiv = document.getElementById('interest_tag');
-    interestInputDiv.oninput = (event) => {
-        const target = event.data;
-            if (target[target.length-1] === ',') {
-                const interestContainComma = document.getElementById('user_interest_input').innerHTML;
-                const interest = interestContainComma.substring(0, interestContainComma.length-1);
-                // 쉽표만 입력됬을 경우 예외처리
-                if (interest === '' || interest[interest.length-1] === ',') {
-                    setTimeout(function(){
-                        interestInputDiv.innerText = '';
-                    }, 500);
-                } else {
-
-                    interestInputDiv.innerText = '';
-                    const interestTag = document.createElement('div');
-
-                    interestTag.classList.add('interest__tag');
-                    interestTag.textContent = `${interest}`;
-                    interestTagDiv.appendChild(interestTag);
-                    interestTag.style.height = '30px';
-                    interestTag.style.width = (interest.length * 15 + 30) + 'px';
-
-                    const tagCloseBtn = document.createElement('div');
-                    tagCloseBtn.classList.add('interest__tag__close__button');
-                    tagCloseBtn.textContent = 'x';
-                    tagCloseBtn.id = 'interest_tag_close_btn';
-                    interestTag.appendChild(tagCloseBtn);
-                    tagCloseBtn.addEventListener('click', (event) => {
-                        const interestTag = event.target.parentNode;
-                        interestTag.remove()
-                    })
-                }
-            }
-
-    };
-
-
-
     // const userInterests = [];
     // let interestCount = 0;
-    // const interestInput = document.getElementById('user_interest_input');
+    // const interestInputDiv = document.getElementById('user_interest_input');
     // const interestTagDiv = document.getElementById('interest_tag');
-    // interestInput.addEventListener('keyup', () => {
-    //     const target = interestInput.value;
-    //     if (target[target.length-1] === ',') {
-    //         const interestContainComma = interestInput.value;
-    //         const interest = interestContainComma.substring(0, interestContainComma.length-1);
-    //         // 쉽표만 입력됬을 경우 예외 처리
-    //         if (interest === '' || interest[interest.length-1] === ',') {
-    //             setTimeout(function(){
-    //                 interestInput.value = '';
-    //             }, 500);
-    //         } else {
-    //             interestInput.value = '';
-    //             const interestTag = document.createElement('div');
+    // interestInputDiv.oninput = (event) => {
+    //     const target = event.data;
+    //         if (target[target.length-1] === ',') {
+    //             const interestContainComma = document.getElementById('user_interest_input').innerHTML;
+    //             const interest = interestContainComma.substring(0, interestContainComma.length-1);
+    //             // 쉽표만 입력됬을 경우 예외처리
+    //             if (interest === '' || interest[interest.length-1] === ',') {
+    //                 setTimeout(function(){
+    //                     interestInputDiv.innerText = '';
+    //                 }, 500);
+    //             } else {
     //
-    //             interestTag.classList.add('interest__tag');
-    //             interestTag.textContent = `${interest}`;
-    //             interestTagDiv.appendChild(interestTag);
-    //             interestTag.style.height = '30px';
-    //             interestTag.style.width = (interest.length * 15 + 30) + 'px';
+    //                 interestInputDiv.innerText = '';
+    //                 const interestTag = document.createElement('span');
     //
-    //             const tagCloseBtn = document.createElement('div');
-    //             tagCloseBtn.classList.add('interest__tag__close__button');
-    //             tagCloseBtn.textContent = 'x';
-    //             interestTag.appendChild(tagCloseBtn);
+    //                 interestTag.classList.add('interest__tag');
+    //                 interestTag.textContent = `${interest}`;
+    //                 interestTagDiv.appendChild(interestTag);
+    //                 interestTag.style.height = '30px';
+    //                 interestTag.style.width = (interest.length * 15 + 30) + 'px';
     //
-    //
-    //             console.log(interest.length)
-    //
+    //                 const tagCloseBtn = document.createElement('div');
+    //                 tagCloseBtn.classList.add('interest__tag__close__button');
+    //                 tagCloseBtn.textContent = 'x';
+    //                 tagCloseBtn.id = 'interest_tag_close_btn';
+    //                 interestTag.appendChild(tagCloseBtn);
+    //                 tagCloseBtn.addEventListener('click', (event) => {
+    //                     const interestTag = event.target.parentNode;
+    //                     interestTag.remove()
+    //                 })
+    //             }
     //         }
-    //     }
-    // });
+    //
+    // };
+
+    const userInterests = [];
+    let interestCount = 0;
+    const interestInput = document.getElementById('user_interest_input');
+    const interestTagDiv = document.getElementById('interest_tag');
+    interestInput.addEventListener('keyup', () => {
+        const target = interestInput.value;
+        if (target[target.length-1] === ',') {
+            const interestContainComma = interestInput.value;
+            const interest = interestContainComma.substring(0, interestContainComma.length-1);
+            // 쉽표만 입력됬을 경우 예외 처리
+            if (interest === '' || interest[interest.length-1] === ',') {
+                setTimeout(function(){
+                    interestInput.value = '';
+                }, 500);
+            } else {
+                interestInput.value = '';
+                const interestTag = document.createElement('div');
+
+                interestTag.classList.add('interest__tag');
+                interestTag.textContent = `${interest}`;
+                // interestTagDiv.appendChild(interestTag);
+
+                interestTag.style.height = '30px';
+                interestTag.style.width = (interest.length * 15 + 30) + 'px';
+
+                const tagCloseBtn = document.createElement('div');
+                tagCloseBtn.classList.add('interest__tag__close__button');
+                tagCloseBtn.textContent = 'x';
+                interestTag.appendChild(tagCloseBtn);
+                tagCloseBtn.addEventListener('click', (event) => {
+                    const interestTag = event.target.parentNode;
+                    interestTag.remove()
+                });
+                interestTagDiv.appendChild(interestInput);
+                interestTagDiv.insertBefore(interestTag, interestInput);
+                interestInput.focus();
+            }
+        }
+    });
 
     // contract
     const contractCheckbox = document.getElementById('user_contract_checkbox');
