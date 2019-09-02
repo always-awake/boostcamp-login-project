@@ -277,22 +277,8 @@ window.onload = function() {
     });
 
     // // interest validation
-    document.getElementById('user_interest_input').addEventListener('focusout', () => {
-        const userInterestMsgDiv = document.getElementById('user_interest_msg');
-        const interestTagsCount = interestTagsDiv.childElementCount;
-        const validation_obj = validator.checkInterestCount(interestTagsCount);
-
-        if (validation_obj === undefined) {
-            userInterestMsgDiv.textContent = '';
-        } else if (!validation_obj['result']) {
-            console.log(`${validation_obj['error_obj']['status']}`);
-            userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
-            userInterestMsgDiv.style.color = '#FF0000';
-        }
-        document.getElementById('user_phone_input').parentElement.className = 'input__box';
-    });
-
     document.getElementById('user_interest_input').addEventListener('focusin', () => {
+        document.getElementById('user_interest_input').parentElement.parentElement.className = 'input__box__interest__checked';
         const userInterestMsgDiv = document.getElementById('user_interest_msg');
         const interestTagsCount = interestTagsDiv.childElementCount;
         const validation_obj = validator.checkInterestCount(interestTagsCount);
@@ -304,8 +290,24 @@ window.onload = function() {
             userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
             userInterestMsgDiv.style.color = '#FF0000';
         }
-        document.getElementById('user_phone_input').parentElement.className = 'input__box';
     });
+
+    document.getElementById('user_interest_input').addEventListener('focusout', () => {
+        document.getElementById('user_interest_input').parentElement.parentElement.className = 'input__box__interest';
+        const userInterestMsgDiv = document.getElementById('user_interest_msg');
+        const interestTagsCount = interestTagsDiv.childElementCount;
+        const validation_obj = validator.checkInterestCount(interestTagsCount);
+
+        if (validation_obj === undefined) {
+            userInterestMsgDiv.textContent = '';
+        } else if (!validation_obj['result']) {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userInterestMsgDiv.style.color = '#FF0000';
+        }
+    });
+
+
 
 
     // contract

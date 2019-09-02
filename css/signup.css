@@ -290,39 +290,40 @@
 
 }
 
-/*.signup__form__input .input__box__interest__checked {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    width: 460px;*/
-/*    min-height: 50px;*/
-/*    flex-flow: wrap;*/
-/*    flex-direction: row;*/
-/*    align-content: center;*/
+.input__box__interest__checked {
+    display: flex;
+    align-items: center;
+    width: 460px;
+    min-height: 50px;
+    flex-flow: wrap;
+    flex-direction: row;
+    align-content: center;
 
-/*    border: 1px solid #2CB400;*/
-/*    background-color: #FFFFFF;*/
-/*}*/
+    border: 1px solid #2CB400;
+    background-color: #FFFFFF;
+}
 
 
 
-.input__box__interest .input__interest {
+.input__interest {
     width: 430px;
     height: 30px;
     line-height: 30px;
 }
 
-.input__box__interest .input__interest:focus {
+
+.input__interest:focus {
     outline:none;
 }
 
-.input__box__interest .interest__tags {
+.interest__tags {
     display: flex;
     flex-flow: wrap;
     margin-right: 8px;
     margin-left: 8px;
 }
 
-.input__box__interest .interest__tags .interest__tag {
+.interest__tags .interest__tag {
     display: flex;
     flex-direction: row;
     justify-items: center;
@@ -339,16 +340,14 @@
 
 }
 
-.input__box__interest .input__tag__interest {
+.input__tag__interest {
     height: 30px;
     border:none;
     font-size: 14px;
     margin-top: 5px;
 }
 
-
-
-.input__box__interest .input__tag__interest:focus {
+.input__tag__interest:focus {
     outline:none;
 }
 
