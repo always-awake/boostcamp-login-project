@@ -197,14 +197,14 @@ window.onload = function() {
     // };
 
     const userInterests = [];
-    let interestCount = 0;
     const interestInput = document.getElementById('user_interest_input');
-    const interestTagDiv = document.getElementById('interest_tag');
+    const interestTagDiv = document.getElementById('interest_tags');
     interestInput.addEventListener('keyup', () => {
         const target = interestInput.value;
         if (target[target.length-1] === ',') {
             const interestContainComma = interestInput.value;
             const interest = interestContainComma.substring(0, interestContainComma.length-1);
+            userInterests.push(interest);
             // 쉽표만 입력됬을 경우 예외 처리
             if (interest === '' || interest[interest.length-1] === ',') {
                 setTimeout(function(){
@@ -213,10 +213,8 @@ window.onload = function() {
             } else {
                 interestInput.value = '';
                 const interestTag = document.createElement('div');
-
                 interestTag.classList.add('interest__tag');
                 interestTag.textContent = `${interest}`;
-                // interestTagDiv.appendChild(interestTag);
 
                 interestTag.style.height = '30px';
                 interestTag.style.width = (interest.length * 15 + 30) + 'px';
@@ -233,6 +231,21 @@ window.onload = function() {
                 interestTagDiv.insertBefore(interestTag, interestInput);
                 interestInput.focus();
             }
+        }
+    });
+
+    // interest tag delete, update function
+    const interestTagsDiv = document.getElementById('interest_tags');
+    interestInput.addEventListener('keydown', (event) => {
+        if (event.key === "Backspace" && userInterests.length !== 0 && interestInput.value === '') {
+            const interestTagsCount = interestTagsDiv.childElementCount;
+            const interestTags = interestTagsDiv.childNodes;
+            const interestTagToUpdate = interestTags[interestTagsCount];
+            interestInput.value = interestTagToUpdate.textContent;
+
+            interestTagToUpdate.remove();
+
+
         }
     });
 
