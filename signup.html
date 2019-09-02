@@ -100,12 +100,13 @@
             </div>
             <div class="signup__form__input">
                 <div class="input__name">관심사</div>
-                <div class="input__box">
-                    <div contenteditable="true">user</div>
-<!--                    <input class="input__tag" id="user_interest_input" type="text" name="user_interest" />-->
-                </div>
-                <div class ="validation__message" id="user_interest_msg"></div>
-            </div>
+                <div class="input__box__interest">
+                    <div class="interest__tags" id="interest_tag"></div>
+                    <div class="input__interest" id="user_interest_input" contenteditable="true"></div>
+<!--                    <input class="input__tag__interest" id="user_interest_input" type="text" name="user_interest" />-->
+        </div>
+        <div class ="validation__message" id="user_interest_msg"></div>
+        </div>
             <div class="signup__form__conditions">
                 <div class="conditions__text">
                     약관에 동의합니다.
@@ -165,7 +166,6 @@
                 <button class="signup__button" type="button">초기화</button>
                 <button class="signup__button" id="signup__button" type="button">가입하기</button>
             </div>
-        </div>
     </section>
 </body>
 </html>
