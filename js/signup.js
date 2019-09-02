@@ -1,7 +1,10 @@
 import validator from './validators.js';
 
 window.onload = function() {
-    document.getElementById('user_id_input').addEventListener('focusin', () => {
+    const idInputDiv = document.getElementById('user_id_input');
+    // idInputDiv.focus();
+
+    idInputDiv.addEventListener('focusin', () => {
         document.getElementById('user_id_input').parentElement.className = 'input__box__checked';
     });
     // id validation
@@ -123,6 +126,8 @@ window.onload = function() {
         document.getElementById('user_phone_input').parentElement.className = 'input__box';
     });
 
+
+
     //name
     document.getElementById('user_name_input').addEventListener('focusin', () => {
         document.getElementById('user_name_input').parentElement.className = 'input__box__checked';
@@ -132,6 +137,29 @@ window.onload = function() {
     });
 
     // birth
+    const birthYearInput = document.getElementById('user_birth_year_input');
+    birthYearInput.addEventListener('focusin', () => {
+        birthYearInput.parentElement.className = 'input__box__birth__checked';
+    });
+    birthYearInput.addEventListener('focusout', () => {
+        birthYearInput.parentElement.className = 'input__box__birth';
+    });
+
+    const birthMonthInput = document.getElementById('user_birth_month_input');
+    birthMonthInput.addEventListener('focusin', () => {
+        birthMonthInput.parentElement.className = 'input__box__birth__checked';
+    });
+    birthMonthInput.addEventListener('focusout', () => {
+        birthMonthInput.parentElement.className = 'input__box__birth';
+    });
+
+    const birthDayInput = document.getElementById('user_birth_day_input');
+    birthDayInput.addEventListener('focusin', () => {
+        birthDayInput.parentElement.className = 'input__box__birth__checked';
+    });
+    birthDayInput.addEventListener('focusout', () => {
+        birthDayInput.parentElement.className = 'input__box__birth';
+    });
 
     // gender
     document.getElementById('user_gender_select').addEventListener('focusin', () => {
@@ -141,61 +169,7 @@ window.onload = function() {
         document.getElementById('user_gender_select').parentElement.className = 'input__box';
     });
 
-    // // interest
-    // document.getElementById('user_interest_input').addEventListener('focusin', () => {
-    //     document.getElementById('user_interest_input').parentElement.className = 'input__box__checked';
-    // });
-    // document.getElementById('user_interest_input').addEventListener('focusout', () => {
-    //     document.getElementById('user_interest_input').parentElement.className = 'input__box';
-    // });
-    // document.getElementById('user_interest_input').addEventListener('keyup', (event) => {
-    //     const target = event.target.value;
-    //     if (target === ',') {
-    //         console.log("됬다!")
-    //
-    //     }
-
-    //
-    // });
-    // const userInterests = [];
-    // let interestCount = 0;
-    // const interestInputDiv = document.getElementById('user_interest_input');
-    // const interestTagDiv = document.getElementById('interest_tag');
-    // interestInputDiv.oninput = (event) => {
-    //     const target = event.data;
-    //         if (target[target.length-1] === ',') {
-    //             const interestContainComma = document.getElementById('user_interest_input').innerHTML;
-    //             const interest = interestContainComma.substring(0, interestContainComma.length-1);
-    //             // 쉽표만 입력됬을 경우 예외처리
-    //             if (interest === '' || interest[interest.length-1] === ',') {
-    //                 setTimeout(function(){
-    //                     interestInputDiv.innerText = '';
-    //                 }, 500);
-    //             } else {
-    //
-    //                 interestInputDiv.innerText = '';
-    //                 const interestTag = document.createElement('span');
-    //
-    //                 interestTag.classList.add('interest__tag');
-    //                 interestTag.textContent = `${interest}`;
-    //                 interestTagDiv.appendChild(interestTag);
-    //                 interestTag.style.height = '30px';
-    //                 interestTag.style.width = (interest.length * 15 + 30) + 'px';
-    //
-    //                 const tagCloseBtn = document.createElement('div');
-    //                 tagCloseBtn.classList.add('interest__tag__close__button');
-    //                 tagCloseBtn.textContent = 'x';
-    //                 tagCloseBtn.id = 'interest_tag_close_btn';
-    //                 interestTag.appendChild(tagCloseBtn);
-    //                 tagCloseBtn.addEventListener('click', (event) => {
-    //                     const interestTag = event.target.parentNode;
-    //                     interestTag.remove()
-    //                 })
-    //             }
-    //         }
-    //
-    // };
-
+    // user interest
     const userInterests = [];
     const interestInput = document.getElementById('user_interest_input');
     const interestTagDiv = document.getElementById('interest_tags');
@@ -225,7 +199,8 @@ window.onload = function() {
                 interestTag.appendChild(tagCloseBtn);
                 tagCloseBtn.addEventListener('click', (event) => {
                     const interestTag = event.target.parentNode;
-                    interestTag.remove()
+                    interestTag.remove();
+                    interestInput.focus();
                 });
                 interestTagDiv.appendChild(interestInput);
                 interestTagDiv.insertBefore(interestTag, interestInput);
@@ -242,12 +217,41 @@ window.onload = function() {
             const interestTags = interestTagsDiv.childNodes;
             const interestTagToUpdate = interestTags[interestTagsCount];
             interestInput.value = interestTagToUpdate.textContent;
-
             interestTagToUpdate.remove();
-
-
         }
     });
+
+    // // interest validation
+    document.getElementById('user_interest_input').addEventListener('focusout', () => {
+        const userInterestMsgDiv = document.getElementById('user_interest_msg');
+        const interestTagsCount = interestTagsDiv.childElementCount;
+        const validation_obj = validator.checkInterestCount(interestTagsCount);
+
+        if (validation_obj === undefined) {
+            userInterestMsgDiv.textContent = '';
+        } else if (!validation_obj['result']) {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userInterestMsgDiv.style.color = '#FF0000';
+        }
+        document.getElementById('user_phone_input').parentElement.className = 'input__box';
+    });
+
+    document.getElementById('user_interest_input').addEventListener('focusin', () => {
+        const userInterestMsgDiv = document.getElementById('user_interest_msg');
+        const interestTagsCount = interestTagsDiv.childElementCount;
+        const validation_obj = validator.checkInterestCount(interestTagsCount);
+
+        if (validation_obj === undefined) {
+            userInterestMsgDiv.textContent = '';
+        } else if (!validation_obj['result']) {
+            console.log(`${validation_obj['error_obj']['status']}`);
+            userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userInterestMsgDiv.style.color = '#FF0000';
+        }
+        document.getElementById('user_phone_input').parentElement.className = 'input__box';
+    });
+
 
     // contract
     const contractCheckbox = document.getElementById('user_contract_checkbox');

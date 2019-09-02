@@ -64,6 +64,8 @@
     background-color: #FFFFFF;
 }
 
+
+
 .input__tag {
     width: 430px;
     height: 30px;
@@ -87,6 +89,18 @@
     background-color: #FFFFFF;
 }
 
+.signup__form__input .input__box__birth__checked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 146px;
+    height: 50px;
+
+    border: 1px solid #2CB400;
+    background-color: #FFFFFF;
+}
+
 .signup__form__input .input__birth .input__tag__birth {
     width: 120px;
     height: 30px;
@@ -95,7 +109,7 @@
 }
 
 
-.signup__form__input .input__box__birth .birth__month {
+.birth__month {
     width: 120px;
     height: 30px;
     border:none;
@@ -127,6 +141,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
+    margin-top: 5px;
 }
 
 .signup__form__conditions .conditions__text {
@@ -275,6 +290,21 @@
 
 }
 
+/*.signup__form__input .input__box__interest__checked {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    width: 460px;*/
+/*    min-height: 50px;*/
+/*    flex-flow: wrap;*/
+/*    flex-direction: row;*/
+/*    align-content: center;*/
+
+/*    border: 1px solid #2CB400;*/
+/*    background-color: #FFFFFF;*/
+/*}*/
+
+
+
 .input__box__interest .input__interest {
     width: 430px;
     height: 30px;
@@ -315,6 +345,8 @@
     font-size: 14px;
     margin-top: 5px;
 }
+
+
 
 .input__box__interest .input__tag__interest:focus {
     outline:none;
