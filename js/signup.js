@@ -187,7 +187,10 @@ window.onload = function() {
                     tagCloseBtn.textContent = 'x';
                     tagCloseBtn.id = 'interest_tag_close_btn';
                     interestTag.appendChild(tagCloseBtn);
-
+                    tagCloseBtn.addEventListener('click', (event) => {
+                        const interestTag = event.target.parentNode;
+                        interestTag.remove()
+                    })
                 }
             }
 
