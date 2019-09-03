@@ -174,9 +174,11 @@ reloadButton.addEventListener('click', () => {
 reloadModalOkButton.addEventListener('click', () => {
      // window.location.reload();
     history.go(0);
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0);setContractEvent()
 });
-
+reloadModalCancelButton.addEventListener('click', () => {
+    reloadModal.style.display = 'none';
+});
 
 
 const init = () => {
