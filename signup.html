@@ -114,12 +114,12 @@
                 <div class="input__box">
                     <input class="condition__checkbox" id="user_contract_checkbox" type="checkbox">
                 </div>
-                <div class="contract__modal" id="myModal">
+                <div class="contract__modal" id="contract_modal">
                     <div class="contract__modal__content">
-                        <div class="contract__close">x</div>
+                        <div class="contract__close" id="contract_modal_close_btn">x</div>
                         <div class="contract">
                             <div class="contract__title">개인정보 수집 및 이용에 대한 안내</div>
-                            <div class="contract__text">
+                            <div class="contract__text" id="contract_text">
                                 &nbsp정보통신망법 규정에 따라 부스트캠프에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, <b>개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간</b>을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.<br>
                                 <br>
                                 <b>1. 수집하는 개인정보의 항목</b><br>
@@ -156,7 +156,7 @@
                                 보존 기간 : 3개월<br>
                                 <br>
                             </div>
-                                <button class="contract__agree__button" type="button">동의</button>
+                                <button class="contract__agree__button" id="contract_modal_agree_btn" type="button">동의</button>
                             </div>
                         </div>
                     </div>

@@ -81,6 +81,12 @@ const REG_EXR = {
     PHONE_CHECK: /^(^010)([0-9]{7,8})$/,
 };
 
+const CONTRACT = {
+    date: '2019-09-03',
+
+
+};
+
 export {
     ERROR,
     PASS,
