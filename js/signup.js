@@ -1,8 +1,7 @@
 import validator from './validators.js';
 
-window.onload = function() {
+window.onload = () => {
     init();
-
     // birth
     const birthYearInput = document.getElementById('user_birth_year_input');
     const birthMonthInput = document.getElementById('user_birth_month_input');
@@ -98,7 +97,7 @@ window.onload = function() {
                 interestInput.value = '';
                 const interestTag = document.createElement('div');
                 interestTag.classList.add('interest__tag');
-                interestTag.textContent = `${interest}`;
+                interestTag.textContent = `${interest.trim()}`;
 
                 interestTag.style.height = '30px';
                 interestTag.style.width = (interest.length * 15 + 30) + 'px';
@@ -163,6 +162,23 @@ window.onload = function() {
     });
 };
 
+
+// 초기화
+const reloadButton =  document.getElementById('signup_reload_button');
+const reloadModalOkButton = document.getElementById('reload_modal_ok_btn');
+const reloadModalCancelButton = document.getElementById('reload_modal_cancel_btn');
+const reloadModal = document.getElementById('reload_modal');
+reloadButton.addEventListener('click', () => {
+    reloadModal.style.display = 'block';
+});
+reloadModalOkButton.addEventListener('click', () => {
+     // window.location.reload();
+    history.go(0);
+    window.scrollTo(0, 0);
+});
+
+
+
 const init = () => {
     setIdEvent();
     setPwEvent();
@@ -172,6 +188,7 @@ const init = () => {
     setEmailEvent();
     setPhoneEvent();
     setContractEvent();
+    // setReloadButtonEvent();
 };
 
 // setting
@@ -260,15 +277,15 @@ const setContractEvent = () => {
     const contractText = document.getElementById('contract_text');
     const contractAgreeBtn = document.getElementById('contract_modal_agree_btn');
 
-    window.addEventListener('click', (event) => {
-        if (event.target === contractModal) contractModal.style.display = 'none';
-    });
     contractCheckbox .addEventListener('click', () => {
         contractCheckbox.checked = false;
         contractModal.style.display = 'block';
     });
     contractCloseBtn .addEventListener('click', () => {
         contractModal.style.display = 'none';
+    });
+    window.addEventListener('click', (event) => {
+        if (event.target === contractModal) contractModal.style.display = 'none';
     });
     contractText.addEventListener('scroll', (event) => {
         const contractText = event.target;
@@ -284,10 +301,6 @@ const setContractEvent = () => {
         contractCheckbox.disabled = true;
     })
 };
-
-
-
-
 
 
 // validation
