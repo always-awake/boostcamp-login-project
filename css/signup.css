@@ -370,7 +370,6 @@
 .interest__tag__close__button {
     display: flex;
     flex-direction: column;
-    /*justify-items: center;*/
     text-align: center;
     align-items: center;
     width: 20px;
@@ -383,4 +382,52 @@
 .interest__tag__close__button:hover {
     cursor: pointer;
     background-color: #CDCDCD;
+}
+
+.reload__modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    padding-top: 10%;
+}
+
+.reload__modal__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    border: 1px solid #bcbcbc;
+    width: 500px;
+    height: 200px;
+}
+
+.reload__modal__message {
+    text-align: center;
+    width: 400px;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+.reload__modal__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 330px;
+}
+.reload__modal__buttons .reload__modal__button {
+    background-color: #2CB400;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+
+    width: 150px;
+    height: 52px;
 }
