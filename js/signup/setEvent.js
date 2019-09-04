@@ -1,7 +1,26 @@
-import validator from './validators.js';
+import {
+    checkIdValidation,
+    checkPwValidation,
+    checkRePwSameness,
+    checkEmailValidation,
+    checkPhoneValidation,
+} from './checkValidation.js';
 
-window.onload = function() {
-    init();
+import validator from './validators.js';
+import {makeSignUpHTML} from './makeSignupHtml.js';
+
+
+const setSignUpEvent = () => {
+    setIdEvent();
+    setPwEvent();
+    setRePwEvent();
+    setNameEvent();
+    setGenderEvent();
+    setEmailEvent();
+    setPhoneEvent();
+    setContractEvent();
+    setREloadButton();
+
 
     // birth
     const birthYearInput = document.getElementById('user_birth_year_input');
@@ -98,7 +117,7 @@ window.onload = function() {
                 interestInput.value = '';
                 const interestTag = document.createElement('div');
                 interestTag.classList.add('interest__tag');
-                interestTag.textContent = `${interest}`;
+                interestTag.textContent = `${interest.trim()}`;
 
                 interestTag.style.height = '30px';
                 interestTag.style.width = (interest.length * 15 + 30) + 'px';
@@ -161,18 +180,13 @@ window.onload = function() {
             userInterestMsgDiv.style.color = '#FF0000';
         }
     });
+
+
 };
 
-const init = () => {
-    setIdEvent();
-    setPwEvent();
-    setRePwEvent();
-    setNameEvent();
-    setGenderEvent();
-    setEmailEvent();
-    setPhoneEvent();
-    setContractEvent();
-};
+
+
+
 
 // setting
 const setIdEvent = () => {
@@ -260,15 +274,15 @@ const setContractEvent = () => {
     const contractText = document.getElementById('contract_text');
     const contractAgreeBtn = document.getElementById('contract_modal_agree_btn');
 
-    window.addEventListener('click', (event) => {
-        if (event.target === contractModal) contractModal.style.display = 'none';
-    });
     contractCheckbox .addEventListener('click', () => {
         contractCheckbox.checked = false;
         contractModal.style.display = 'block';
     });
     contractCloseBtn .addEventListener('click', () => {
         contractModal.style.display = 'none';
+    });
+    window.addEventListener('click', (event) => {
+        if (event.target === contractModal) contractModal.style.display = 'none';
     });
     contractText.addEventListener('scroll', (event) => {
         const contractText = event.target;
@@ -285,86 +299,28 @@ const setContractEvent = () => {
     })
 };
 
-
-
-
-
-
-// validation
-const checkIdValidation = (idInputDiv) => {
-    const idInputValue = idInputDiv.value;
-    const idMsgDiv = document.getElementById('user_id_msg');
-    const validation = validator.checkIdValidation(idInputValue);
-
-    if (validation['result']) {
-        const pass = validation['pass_obj'];
-        idMsgDiv.textContent = `${pass['msg']}`;
-        idMsgDiv.style.color = pass['msg_color']
-    } else {
-        const error = validation['error_obj'];
-        idMsgDiv.textContent = `${error['msg']}`;
-        idMsgDiv.style.color = error['msg_color']
-    }
+const setREloadButton = () => {
+    // 초기화
+    const reloadButton =  document.getElementById('signup_reload_button');
+    const reloadModalOkButton = document.getElementById('reload_modal_ok_btn');
+    const reloadModalCancelButton = document.getElementById('reload_modal_cancel_btn');
+    const reloadModal = document.getElementById('reload_modal');
+    reloadButton.addEventListener('click', () => {
+        reloadModal.style.display = 'block';
+    });
+    reloadModalOkButton.addEventListener('click', () => {
+        // window.location.reload();
+        // history.go(0);
+        makeSignUpHTML();
+        window.scrollTo(0, 0);
+    });
+    reloadModalCancelButton.addEventListener('click', () => {
+        reloadModal.style.display = 'none';
+    });
 };
 
-const checkPwValidation = (pwInputDiv) => {
-    const pwInputValue = pwInputDiv.value;
-    const pwMsgDiv = document.getElementById('user_password_msg');
-    const validation = validator.checkPwValidation(pwInputValue);
 
-    if (validation['result']) {
-        const pass = validation['pass_obj'];
-        pwMsgDiv.textContent = `${pass['msg']}`;
-        pwMsgDiv.style.color = pass['msg_color']
-    } else {
-        const error = validation['error_obj'];
-        pwMsgDiv.textContent = `${error['msg']}`;
-        pwMsgDiv.style.color = error['msg_color']
-    }
+
+export {
+    setSignUpEvent,
 };
-
-const checkRePwSameness = (rePwInputDiv) => {
-    const rePwMsgDiv = document.getElementById('user_re_password_msg');
-    const oldPw = document.getElementById('user_pw_input').value;
-    const newPw = rePwInputDiv.value;
-    const validation = validator.checkPwSameness(oldPw, newPw);
-
-    if (validation['result']) {
-        const pass = validation['pass_obj'];
-        rePwMsgDiv.textContent = `${pass['msg']}`;
-        rePwMsgDiv.style.color = pass['msg_color'];
-    } else {
-        const error = validation['error_obj'];
-        rePwMsgDiv.textContent = `${error['msg']}`;
-        rePwMsgDiv.style.color = error['msg_color'];
-    }
-};
-
-const checkEmailValidation = (emailInputDiv) => {
-    const emailInputValue = emailInputDiv.value;
-    const emailMsgDiv = document.getElementById('user_email_msg');
-    const validation = validator.checkEmailValidation(emailInputValue);
-
-    if (validation === undefined) {
-        emailMsgDiv.textContent = '';
-    } else {
-        const error = validation['error_obj'];
-        emailMsgDiv.textContent = `${error['msg']}`;
-        emailMsgDiv.style.color = error['msg_color'];
-    }
-};
-
-const checkPhoneValidation = (phoneInputDiv) => {
-    const phoneInputValue = phoneInputDiv.value;
-    const phoneMsgDiv = document.getElementById('user_phone_msg');
-    const validation = validator.checkPhoneValidation(phoneInputValue);
-
-    if (validation === undefined) {
-        phoneMsgDiv.textContent = '';
-    } else {
-        const error = validation['error_obj'];
-        phoneMsgDiv.textContent = `${error['msg']}`;
-        phoneMsgDiv.style.color = error['msg_color'];
-    }
-};
-
