@@ -119,7 +119,7 @@
     -webkit-appearance: none;
     background-color: #FFFFFF;
     font-size: 14px;
-    background: url('../images/drop_down_button.svg') no-repeat 95% 50%;
+    background: url('../../images/drop_down_button.svg') no-repeat 95% 50%;
     background-size: 13px;
 }
 .birth__month:focus {
@@ -143,7 +143,7 @@
     -webkit-appearance: none;
     background-color: #FFFFFF;
     font-size: 14px;
-    background: url('../images/drop_down_button.svg') no-repeat 98% 50%;
+    background: url('../../images/drop_down_button.svg') no-repeat 98% 50%;
     background-size: 13px;
 }
 
