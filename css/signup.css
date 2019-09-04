@@ -193,6 +193,10 @@
     height: 62px;
 }
 
+.signup__form__buttons .signup__button:hover {
+    cursor: pointer;
+}
+
 .contract__modal {
     display: none;
     position: fixed;
@@ -432,6 +436,10 @@
     height: 52px;
 }
 
+.reload__modal__buttons .reload__modal__ok__button:hover {
+    cursor: pointer;
+}
+
 .reload__modal__buttons .reload__modal__cancel__button {
     background-color: #DADADA;
     border: none;
@@ -442,4 +450,8 @@
 
     width: 150px;
     height: 52px;
+}
+
+.reload__modal__buttons .reload__modal__cancel__button:hover {
+    cursor: pointer;
 }
