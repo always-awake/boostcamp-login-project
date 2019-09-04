@@ -7,6 +7,7 @@ import {
 } from './checkValidation.js';
 
 import validator from './validators.js';
+import {makeSignUpHTML} from './makeSignupHtml.js';
 
 
 const setSignUpEvent = () => {
@@ -309,8 +310,9 @@ const setREloadButton = () => {
     });
     reloadModalOkButton.addEventListener('click', () => {
         // window.location.reload();
-        history.go(0);
-        window.scrollTo(0, 0);setContractEvent()
+        // history.go(0);
+        makeSignUpHTML();
+        window.scrollTo(0, 0);
     });
     reloadModalCancelButton.addEventListener('click', () => {
         reloadModal.style.display = 'none';
