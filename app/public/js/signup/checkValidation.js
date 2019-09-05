@@ -1,6 +1,5 @@
 import validator from './validators.js';
 
-// validation
 const checkIdValidation = (idInputDiv) => {
     const idInputValue = idInputDiv.value;
     const idMsgDiv = document.getElementById('user_id_msg');
@@ -55,7 +54,7 @@ const checkEmailValidation = (emailInputDiv) => {
     const emailMsgDiv = document.getElementById('user_email_msg');
     const validation = validator.checkEmailValidation(emailInputValue);
 
-    if (validation === undefined) {
+    if (validation['result']) {
         emailMsgDiv.textContent = '';
     } else {
         const error = validation['error_obj'];
@@ -69,7 +68,7 @@ const checkPhoneValidation = (phoneInputDiv) => {
     const phoneMsgDiv = document.getElementById('user_phone_msg');
     const validation = validator.checkPhoneValidation(phoneInputValue);
 
-    if (validation === undefined) {
+    if (validation['result']) {
         phoneMsgDiv.textContent = '';
     } else {
         const error = validation['error_obj'];
@@ -92,7 +91,7 @@ const checkEmptyValidation = (user) => {
                 emptyPropList.push(prop);
             }
         } else {
-            if (userProp.value === '' || userProp.value === []) {
+            if (userProp.value.length === 0) {
                 emptyPropList.push(prop);
             }
         }
@@ -101,7 +100,32 @@ const checkEmptyValidation = (user) => {
 };
 
 const checkAllInputValidation = (user) => {
+    console.log(user);
+    const validationResultList = [];
+    validationResultList.push(validator.checkIdValidation(user.id.value)['result']);
+    validationResultList.push(validator.checkPwValidation(user.password.value)['result']);
+    validationResultList.push(validator.checkPwSameness(user.password.value, user.re_password.value)['result']);
+    validationResultList.push(validator.checkEmailValidation(user.email.value)['result']);
+    validationResultList.push(validator.checkPhoneValidation(user.phone.value)['result']);
 
+    validationResultList.push(validator.checkBirthYearValidation(user.birth.year)['result']);
+    validationResultList.push(validator.checkBirthDayValidation(user.birth.day)['result']);
+
+    if (user.interests.value.length >= 3) {
+        validationResultList.push(true);
+    } else {
+        validationResultList.push(false);
+    }
+
+    if (user.gender.value === 'default') {
+        validationResultList.push(false);
+    } else {
+        validationResultList.push(true);
+    }
+
+    return validationResultList.every((result) => {
+        return result === true;
+    });
 };
 
 
@@ -112,4 +136,5 @@ export {
     checkEmailValidation,
     checkPhoneValidation,
     checkEmptyValidation,
-}
+    checkAllInputValidation,
+};

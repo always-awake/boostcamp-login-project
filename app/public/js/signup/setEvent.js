@@ -160,7 +160,7 @@ const setSignUpEvent = () => {
         const interestTagsCount = interestTagsDiv.childElementCount;
         const validation_obj = validator.checkInterestCount(interestTagsCount);
 
-        if (validation_obj === undefined) {
+        if (validation_obj['result']) {
             userInterestMsgDiv.textContent = '';
         } else if (!validation_obj['result']) {
             console.log(`${validation_obj['error_obj']['status']}`);
@@ -325,7 +325,6 @@ const setSignupButton = () => {
     const signupModalButton = document.getElementById('signup_modal_ok_btn');
     signupButton.addEventListener('click', () => {
         userSignup();
-        signupModal.style.display = 'block';
     });
     signupModalButton.addEventListener('click', () => {
         signupModal.style.display = 'none';

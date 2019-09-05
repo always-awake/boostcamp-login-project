@@ -80,7 +80,7 @@ const signupForm = () => {
                 <div class="input__name">성별</div>
                 <div class="input__box">
                     <select class="input__gender user__info" id="user_gender_select">
-                        <option value selected>성별</option>
+                        <option value selected value="default">성별</option>
                         <option value="boy">남자</option>
                         <option value="girl">여자</option>
                     </select>
