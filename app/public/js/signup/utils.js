@@ -120,9 +120,22 @@ const CONTRACT = {
            <br>`
 };
 
+const SIGNUP_ERROR_MODAL_TEXT = (emptyPropList) => {
+    let modalText = '';
+    emptyPropList.forEach((prop) => {
+        modalText += `\n${prop}`
+    });
+    return modalText
+};
+
+const CONVERT_ENGPROPNAME_TO_KORPROPNAME = () => {
+
+};
+
 export {
     ERROR,
     PASS,
     REG_EXR,
     CONTRACT,
+    SIGNUP_ERROR_MODAL_TEXT
 };

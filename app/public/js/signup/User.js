@@ -7,7 +7,6 @@ const User = class {
         this.password = {
             value: '',
             validation: false,
-
         };
         this.re_password = {
             value: '',
@@ -18,9 +17,9 @@ const User = class {
             validation: true
         };
         this.birth = {
-            year: 0,
-            month: 0,
-            day: 0,
+            year: '',
+            month: '',
+            day: '',
             validation: false
         };
         this.gender = {
@@ -32,7 +31,7 @@ const User = class {
             validation: false
         };
         this.phone = {
-            value: 0,
+            value: '',
             validation: false
         };
         this.interests = {
