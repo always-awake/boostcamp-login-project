@@ -78,10 +78,38 @@ const checkPhoneValidation = (phoneInputDiv) => {
     }
 };
 
+const checkEmptyValidation = (user) => {
+    const userProps = Object.keys(user);
+    const emptyPropList = [];
+    for (let prop of userProps) {
+        const userProp = user[prop];
+        if (prop === 'birth') {
+            if (userProp['year'] === '' || userProp['month'] === '' || userProp['day'] === '') {
+                emptyPropList.push(prop);
+            }
+        } else if (prop === 'contract') {
+            if (userProp['validation'] === false) {
+                emptyPropList.push(prop);
+            }
+        } else {
+            if (userProp.value === '' || userProp.value === []) {
+                emptyPropList.push(prop);
+            }
+        }
+    }
+    return emptyPropList
+};
+
+const checkAllInputValidation = (user) => {
+
+};
+
+
 export {
     checkIdValidation,
     checkPwValidation,
     checkRePwSameness,
     checkEmailValidation,
     checkPhoneValidation,
+    checkEmptyValidation,
 }
