@@ -83,6 +83,10 @@ const checkEmailValidation = (email) => {
             result: false,
             error_obj: ERROR['EMAIL_STRUCTURE_ERROR']
         }
+    } else {
+        return {
+            result: true,
+        }
     }
 };
 
@@ -101,15 +105,23 @@ const checkPhoneValidation = (phone) => {
             result: false,
             error_obj: ERROR['PHONE_STRUCTURE_ERROR']
         }
+    } else {
+        return {
+            result: true,
+        }
     }
 };
 
 const checkInterestCount = (interests) => {
-
+    console.log(interests);
     if (interests < 4) {
         return {
             result: false,
             error_obj: ERROR['INTEREST_COUNT_ERROR']
+        }
+    } else {
+        return {
+            result: true,
         }
     }
 };
@@ -130,6 +142,10 @@ const checkBirthYearValidation = (year) => {
             result: 'structure_error',
             error_obj: ERROR['BIRTH_YEAR_STRUCTURE_ERROR']
         }
+    } else {
+        return {
+            result: true
+        }
     }
 };
 
@@ -139,6 +155,10 @@ const checkBirthDayValidation = (year, month, day) => {
         return {
             result: false,
             error_obj: ERROR['BIRTH_MONTH_DAY_STRUCTURE_ERROR']
+        }
+    } else {
+        return {
+            result: true
         }
     }
 };

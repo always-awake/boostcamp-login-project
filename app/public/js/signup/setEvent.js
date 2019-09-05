@@ -8,6 +8,8 @@ import {
 
 import validator from './validators.js';
 import {makeSignUpHTML} from './makeSignupHtml.js';
+import {userSignup} from './userSignup.js';
+
 
 
 const setSignUpEvent = () => {
@@ -19,7 +21,8 @@ const setSignUpEvent = () => {
     setEmailEvent();
     setPhoneEvent();
     setContractEvent();
-    setREloadButton();
+    setReloadButton();
+    setSignupButton();
 
 
     // birth
@@ -157,7 +160,7 @@ const setSignUpEvent = () => {
         const interestTagsCount = interestTagsDiv.childElementCount;
         const validation_obj = validator.checkInterestCount(interestTagsCount);
 
-        if (validation_obj === undefined) {
+        if (validation_obj['result']) {
             userInterestMsgDiv.textContent = '';
         } else if (!validation_obj['result']) {
             console.log(`${validation_obj['error_obj']['status']}`);
@@ -299,8 +302,7 @@ const setContractEvent = () => {
     })
 };
 
-const setREloadButton = () => {
-    // 초기화
+const setReloadButton = () => {
     const reloadButton =  document.getElementById('signup_reload_button');
     const reloadModalOkButton = document.getElementById('reload_modal_ok_btn');
     const reloadModalCancelButton = document.getElementById('reload_modal_cancel_btn');
@@ -309,13 +311,23 @@ const setREloadButton = () => {
         reloadModal.style.display = 'block';
     });
     reloadModalOkButton.addEventListener('click', () => {
-        // window.location.reload();
-        // history.go(0);
         makeSignUpHTML();
         window.scrollTo(0, 0);
     });
     reloadModalCancelButton.addEventListener('click', () => {
         reloadModal.style.display = 'none';
+    });
+};
+
+const setSignupButton = () => {
+    const signupButton = document.getElementById('signup_submit_button');
+    const signupModal = document.getElementById('signup_modal');
+    const signupModalButton = document.getElementById('signup_modal_ok_btn');
+    signupButton.addEventListener('click', () => {
+        userSignup();
+    });
+    signupModalButton.addEventListener('click', () => {
+        signupModal.style.display = 'none';
     });
 };
 
