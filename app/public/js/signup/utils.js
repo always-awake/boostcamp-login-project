@@ -132,10 +132,15 @@ const CONVERT_ENGPROPNAME_TO_KORPROPNAME = () => {
 
 };
 
+const ID_VALIDATION_CHECK_URL = 'http://localhost:3000/users/validation/id';
+const SIGN_UP_URL = 'http://localhost:3000/users/';
+
 export {
     ERROR,
     PASS,
     REG_EXR,
     CONTRACT,
-    SIGNUP_ERROR_MODAL_TEXT
+    SIGNUP_ERROR_MODAL_TEXT,
+    ID_VALIDATION_CHECK_URL,
+    SIGN_UP_URL
 };
