@@ -53,7 +53,12 @@ const ERROR = {
         status: 'Wrong Interest Count Error (More 3 interest)',
         msg: '3개 이상의 관심사를 입력하세요.',
         msg_color: '#FF0000'
-    }
+    },
+    ID_DUPLICATION_ERROR: {
+      status: 'Id Duplication Error (Input another Id)',
+      msg: '이미 사용중이거나 탈퇴한 아이디입니다.',
+      msg_color: '#FF0000',
+    },
 };
 
 const PASS = {
