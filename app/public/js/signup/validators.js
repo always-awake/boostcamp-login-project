@@ -113,7 +113,6 @@ const checkPhoneValidation = (phone) => {
 };
 
 const checkInterestCount = (interests) => {
-    console.log(interests);
     if (interests < 4) {
         return {
             result: false,

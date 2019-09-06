@@ -87,11 +87,11 @@ const checkEmptyValidation = (user) => {
                 emptyPropList.push(prop);
             }
         } else if (prop === 'contract') {
-            if (userProp['validation'] === false) {
+            if (userProp === false) {
                 emptyPropList.push(prop);
             }
         } else {
-            if (userProp.value.length === 0) {
+            if (userProp.length === 0) {
                 emptyPropList.push(prop);
             }
         }
@@ -100,24 +100,23 @@ const checkEmptyValidation = (user) => {
 };
 
 const checkAllInputValidation = (user) => {
-    console.log(user);
     const validationResultList = [];
-    validationResultList.push(validator.checkIdValidation(user.id.value)['result']);
-    validationResultList.push(validator.checkPwValidation(user.password.value)['result']);
-    validationResultList.push(validator.checkPwSameness(user.password.value, user.re_password.value)['result']);
-    validationResultList.push(validator.checkEmailValidation(user.email.value)['result']);
-    validationResultList.push(validator.checkPhoneValidation(user.phone.value)['result']);
+    validationResultList.push(validator.checkIdValidation(user.id)['result']);
+    validationResultList.push(validator.checkPwValidation(user.password)['result']);
+    validationResultList.push(validator.checkPwSameness(user.password, user.re_password)['result']);
+    validationResultList.push(validator.checkEmailValidation(user.email)['result']);
+    validationResultList.push(validator.checkPhoneValidation(user.phone)['result']);
 
     validationResultList.push(validator.checkBirthYearValidation(user.birth.year)['result']);
     validationResultList.push(validator.checkBirthDayValidation(user.birth.day)['result']);
 
-    if (user.interests.value.length >= 3) {
+    if (user.interests.length >= 3) {
         validationResultList.push(true);
     } else {
         validationResultList.push(false);
     }
 
-    if (user.gender.value === 'default') {
+    if (user.gender === 'default') {
         validationResultList.push(false);
     } else {
         validationResultList.push(true);

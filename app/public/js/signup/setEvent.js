@@ -9,6 +9,7 @@ import {
 import validator from './validators.js';
 import {makeSignUpHTML} from './makeSignupHtml.js';
 import {userSignup} from './userSignup.js';
+import {checkDuplication} from './checkDuplication.js';
 
 
 
@@ -171,20 +172,8 @@ const setSignUpEvent = () => {
 
     document.getElementById('user_interest_input').addEventListener('focusout', () => {
         document.getElementById('user_interest_input').parentElement.parentElement.className = 'input__box__interest';
-        const userInterestMsgDiv = document.getElementById('user_interest_msg');
         const interestTagsCount = interestTagsDiv.childElementCount;
-        const validation_obj = validator.checkInterestCount(interestTagsCount);
-
-        if (validation_obj === undefined) {
-            userInterestMsgDiv.textContent = '';
-        } else if (!validation_obj['result']) {
-            console.log(`${validation_obj['error_obj']['status']}`);
-            userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
-            userInterestMsgDiv.style.color = '#FF0000';
-        }
     });
-
-
 };
 
 
@@ -200,6 +189,7 @@ const setIdEvent = () => {
     });
     idInputDiv.addEventListener('focusout', () => {
         checkIdValidation(idInputDiv);
+        checkDuplication(idInputDiv);
         idInputDiv.parentElement.className = 'input__box';
     });
 };
