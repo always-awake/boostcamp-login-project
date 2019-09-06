@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {users} = require('../db/settings/users.js');
 
-
+// 아이디 중복체크
 router.get('/:id', function(req, res) {
     const idToCheck = req.params.id;
     try{
@@ -27,12 +27,11 @@ router.get('/:id', function(req, res) {
     }
 });
 
-
-
-
 // 회원가입
 router.post('/', function(req, res, next) {
+
   try {
+      req.body['pk'] = users.get('count');
     users.get('users')
         .push(req.body)
         .write();
@@ -52,8 +51,5 @@ router.post('/', function(req, res, next) {
     )
   }
 });
-
-
-router.get('/validation/id')
 
 module.exports = router;
