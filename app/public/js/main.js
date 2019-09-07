@@ -9,7 +9,7 @@ window.onload = () => {
             if (res['msg'] === 'Not Logined' && res['user'] === null) {
                 makeLoginHTML();
             } else {
-                makeMyPageHTML();
+                makeMyPageHTML(res['user']);
             }
         })
         .catch(err => console.error('Error: ', err));

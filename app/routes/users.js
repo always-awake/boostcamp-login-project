@@ -52,12 +52,12 @@ router.post('/', function(req, res, next) {
   }
 });
 
-// 로그인
+// 최초 로그인
 router.post('/login', function(req, res, next) {
-    console.log('로그인 요청 받음');
+    const validUser = getUser(req.body['id'], req.body['pw']);
     try {
-        const validUser = getUser(req.body['id'], req.body['pw']);
         if (validUser !== undefined) {
+            deleteOldSession(validUser.pk);
             const sessionId = uuidv4();
             const session = {
                 sessionId: sessionId,
@@ -72,31 +72,34 @@ router.post('/login', function(req, res, next) {
             sessions.get('sessions')
                 .push(session)
                 .write();
-            sessions.update('count', n => n + 1)
-                .write();
 
-            res.cookie('user_cookie', sessionId, {
-                maxAge: 10000,
-                httpOnly: true,
-                signed: true,
-            });
+            if (!req.cookies.user_auth) {
+                res.cookie('user_auth', sessionId, {
+                    maxAge: 10000,
+                    httpOnly: true,
+                    signed: true,
+                    saveUninitialized: true,
+                });
+            }
             res.json(
                 {
                     status: 200,
-                    msg: 'login success'
+                    msg: 'login success',
+                    user: session['user'],
                 }
             )
         } else {
             // 로그인을 다시 해주세요라는 모달 띄우기 로직을 위한 json
             res.json(
                 {
-                    status: 404
+                    status: 404,
+                    msg: 'Please enter Id and PW again.'
                 }
             )
         }
 
     } catch (e) {
-        console.log(e);
+
         res.json(
             {
                 status: 500,
@@ -108,10 +111,15 @@ router.post('/login', function(req, res, next) {
 });
 
 const getUser = (id, pw) => {
-    console.log(id, pw);
     return users.get('users')
         .find({id: id, password: pw})
         .value();
+};
+
+const deleteOldSession = (pk) => {
+    sessions.get('sessions')
+        .remove({user:{ pk:pk }})
+        .write();
 };
 
 module.exports = router;

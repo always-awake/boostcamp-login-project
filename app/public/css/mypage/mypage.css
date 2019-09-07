@@ -1,0 +1,106 @@
+* {
+    font-family: 'Nanum Gothic';
+}
+.mypage__header {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: #2CB400;
+}
+.mypage__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mypage {
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+    height: 510px;
+    background-color: #ffffff;
+    align-items: center;
+}
+
+
+.mypage .mypage__profile__image {
+    display: flex;
+    flex-direction: row;
+    width: 170px;
+    height: 170px;
+    margin-top: 50px;
+}
+
+#profile_img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+
+.mypage__user__info {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+    width: 380px;
+    height: 200px;
+}
+
+.mypage__user__info .user__name {
+    margin-top: 20px;
+    margin-left: 22px;
+}
+
+.mypage__user__info .user__name .username {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.mypage__user__info .user__name .suffix {
+    font-size: 18px;
+}
+
+.mypage__user__info .user__id {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #777777;
+}
+
+.mypage__user__info .user__email {
+    margin-top: 5px;
+}
+
+
+
+.user__interests {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+
+.user__interests .user__interest {
+    background-color: #EFEFEF;
+    font-size: 16px;
+    padding: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+}
+
+.logout__btn {
+    width: 380px;
+    height: 62px;
+    background-color: #3EC628;
+    color: #ffffff;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 19px;
+    line-height: 62px;
+}
+
+.logout__btn:hover {
+    cursor: pointer;
+}

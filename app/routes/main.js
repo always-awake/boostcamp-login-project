@@ -36,8 +36,6 @@ router.get('/main', function(req, res, next) {
             }
         )
     } else {
-        console.log('자동 로그인');
-        console.log(req.signedCookies.user_auth);
         const session = sessions.get('sessions')
             .find({ sessionId:req.signedCookies.user_auth })
             .value();

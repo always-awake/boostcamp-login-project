@@ -18,7 +18,7 @@ const userLogin = (id, pw) => {
 
             if (responseStatus === 200 && responseMsg === 'login success') {
                 console.log('정상적으로 로그인되었습니다.');
-                makeMyPageHTML();
+                makeMyPageHTML(res['user']);
             } else if (responseStatus === 404 && responseMsg === 'Please enter Id and PW again.') {
                 console.log('아이디 또는 비밀번호를 다시 확인하세요.')
             } else if (responseStatus === 500) {
