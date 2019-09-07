@@ -9,7 +9,6 @@ const checkDuplication = (idInputDiv) => {
         .then(res => res.json())
         .then((res) => {
             console.log('Success: ', res);
-            console.log(res['duplication']);
             if (res['duplication']) {
                 idMsgDiv.textContent = `${ERROR['ID_DUPLICATION_ERROR']['msg']}`;
                 idMsgDiv.style.color = ERROR['ID_DUPLICATION_ERROR']['msg_color'];
