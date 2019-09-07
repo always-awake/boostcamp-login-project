@@ -4,7 +4,7 @@ const adapter = new FileSync('./db/sessions.json');
 const sessions = low(adapter);
 
 
-sessions.defaults({ sessions: [], count: 0 })
+sessions.defaults({ sessions: [] })
     .write();
 
 
