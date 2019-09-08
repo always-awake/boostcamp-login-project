@@ -2,13 +2,6 @@
     border-radius: 0px !important;
 }
 
-a {
-    color: #66BD5D;
-    display:inline-block;
-    text-decoration: none;
-    font-weight: 400;
-}
-
 h2 {
     text-align: center;
     font-size: 16px;
@@ -40,7 +33,8 @@ h2 {
     background: #fff;
     padding: 30px;
     width: 90%;
-    max-width: 450px;
+    max-width: 500px;
+    height: 510px;
     position: relative;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
 
@@ -52,8 +46,9 @@ h2 {
     text-align: left;
     margin-left: 36px;
     width: 90%;
-    font-size: 13px;
+    font-size: 12px;
 }
+
 
 
 
@@ -108,7 +103,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 
 input[type=text], input[type=email] {
     background-color: #f6f6f6;
-    border: none;
+    /*border: none;*/
     color: #0d0d0d;
     padding: 10px 25px;
     text-align: center;
@@ -242,6 +237,52 @@ input[type=text]:focus, input[type=email]:focus{
     outline: none;
 }
 
-#icon {
-    width:30%;
+/*#icon {*/
+/*    width:30%;*/
+/*}*/
+
+
+#login_line {
+    height: 0;
+    width: 440px;
+    border-top: 1px solid #E4E4E5;
+    margin-bottom: 20px;
+}
+
+#signup__text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display:inline-block;
+    color: #66BD5D;
+    margin-bottom: 10px;
+
+}
+
+.login__title {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.find__vertical__line {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #E4E4E5;
+}
+
+.login__find__buttons {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: #8E8E8E;
+}
+
+.find__pw__button:hover {
+    cursor: pointer;
+}
+.find__id__button:hover {
+    cursor: pointer;
 }
