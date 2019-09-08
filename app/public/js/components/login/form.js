@@ -8,7 +8,6 @@ const loginForm = () => {
                         <input type="text" id="login_id" class="fadeIn second zero-raduis" placeholder="아이디">
                         <input type="text" id="login_pw" class="fadeIn third zero-raduis" name="login" placeholder="비밀번호">
                         <div id="formFooter">
-                            <a class="underlineHover" href="#">Forgot Password?</a>
                         </div>
                         <input type="button" class="fadeIn fourth zero-raduis pc" value="login" id="login_btn">
                         <h2>You don't have a account ?</h2>

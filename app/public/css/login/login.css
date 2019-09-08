@@ -49,8 +49,10 @@ h2 {
 
 #formFooter {
     padding: 2px ;
-    text-align: right;
+    text-align: left;
+    margin-left: 36px;
     width: 90%;
+    font-size: 13px;
 }
 
 
