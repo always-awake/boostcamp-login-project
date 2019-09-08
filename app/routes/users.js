@@ -30,16 +30,44 @@ router.get('/:id', function(req, res) {
 
 // 회원가입
 router.post('/', function(req, res, next) {
-  try {
+
+    try {
       req.body['pk'] = users.get('count');
+        const user = req.body;
     users.get('users')
         .push(req.body)
         .write();
     users.update('count', n => n + 1)
         .write();
+
+      const sessionId = uuidv4();
+      const session = {
+          sessionId: sessionId,
+          user: {
+              pk: user.pk,
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              interests: user.interests,
+          }
+      };
+        sessions.get('sessions')
+            .push(session)
+            .write();
+
+        if (!req.cookies.user_auth) {
+            res.cookie('user_auth', sessionId, {
+                maxAge: 1000000,
+                httpOnly: true,
+                signed: true,
+                saveUninitialized: true,
+            });
+        }
     res.json(
         {
-          status: '201 CREATED',
+            status: '201 CREATED',
+            msg: 'Sign Up Success',
+            user: session['user'],
         }
     )
   } catch (e) {

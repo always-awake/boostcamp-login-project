@@ -2,6 +2,7 @@ import {checkEmptyValidation, checkAllInputValidation} from './checkValidation.j
 import {makeUser} from './makeUser.js'
 import {SIGNUP_ERROR_MODAL_TEXT, SIGN_UP_URL} from './utils.js';
 import {makeSignupModal} from './makeSignupModal.js';
+import {makeMyPageHTML} from '../mypage/makeMyPageHtml.js';
 
 
 const userSignup = () => {
@@ -20,9 +21,10 @@ const userSignup = () => {
                 'Content-Type' : 'application/json;charset=utf-8'
             }
         }).then(res => res.json())
-            .then(res => console.log('Success: ', res))
-            .then(() => {
-                    console.log('회원가입 완료');
+            .then(res => {
+                console.log('Success: ', res);
+                console.log('회원가입 완료');
+                makeMyPageHTML(res['user']);
             })
             .catch(err => console.error('Error: ', err))
 
