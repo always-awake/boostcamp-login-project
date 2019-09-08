@@ -75,7 +75,7 @@ router.post('/login', function(req, res, next) {
 
             if (!req.cookies.user_auth) {
                 res.cookie('user_auth', sessionId, {
-                    maxAge: 10000,
+                    maxAge: 1000000,
                     httpOnly: true,
                     signed: true,
                     saveUninitialized: true,
@@ -121,5 +121,22 @@ const deleteOldSession = (pk) => {
         .remove({user:{ pk:pk }})
         .write();
 };
+
+// 유저 로그아웃
+router.post('/logout', function (req, res, next) {
+    console.log('로그아웃 요청 받음');
+    console.log(req.signedCookies.user_auth);
+    sessions.get('sessions')
+        .remove({ sessionId: req.signedCookies.user_auth })
+        .write();
+    res.clearCookie('user_auth');
+    res.json(
+        {
+            status: 200,
+            msg: 'Logout Success'
+        }
+    )
+});
+
 
 module.exports = router;
