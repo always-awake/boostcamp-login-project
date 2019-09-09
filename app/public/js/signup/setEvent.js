@@ -192,7 +192,7 @@ const setIdEvent = () => {
     });
     idInputDiv.addEventListener('focusout', () => {
         checkIdValidation(idInputDiv);
-        checkDuplication(idInputDiv);
+        if (idInputDiv.value !== '') checkDuplication(idInputDiv);
         idInputDiv.parentElement.className = 'input__box';
     });
 };
