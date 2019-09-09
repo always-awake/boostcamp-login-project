@@ -1,7 +1,7 @@
 const myPage = (user) => {
     return `<div class="mypage">
     <div class="mypage__profile__image" id="mypage_profile_image">
-        <img id="profile_img" src="http://mblogthumb1.phinf.naver.net/20150427_84/ninevincent_1430122792324niOLy_JPEG/kakao_2.jpg?type=w2" alt="">
+        <img id="profile_img" src="../../../images/default.png" alt="마이페이지 기본 이미지">
     </div>
     <div class="mypage__user__info" id="mypage_user_info">
         <div class="user__name">
@@ -14,7 +14,6 @@ const myPage = (user) => {
     </div>
     <button class="logout__btn" id="mypage_logout_btn">로그아웃</button>
 </div>`
-
 };
 
 export  {
