@@ -33,8 +33,8 @@ const resetModal = () => {
 const signupModal = () => {
     return `<div class="signup__modal" id="signup_modal">
                 <div class="signup__modal__content">
-                    <div class="contract__title">아래의 항목들을 입력해주세요.</div>
-                    <div class="signup__text" id="signup_modal_text">
+                    <div class="signup__modal__title">아래의 항목들을 입력해주세요.</div>
+                    <div class="signup__modal__text" id="signup_modal_text">
                     </div>
                     <div class="signup__modal__buttons">
                         <button class="signup__modal__ok__button" id="signup_modal_ok_btn">확인</button>

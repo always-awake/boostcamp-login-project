@@ -1,0 +1,74 @@
+.signup__modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    padding-top: 10%;
+}
+
+.signup__modal__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    border: 1px solid #bcbcbc;
+    width: 500px;
+    height: 420px;
+}
+
+.signup__modal__message {
+    text-align: center;
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+.signup__modal__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 330px;
+}
+.signup__modal__buttons .signup__modal__ok__button {
+    background-color: #2CB400;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+
+    width: 150px;
+    height: 52px;
+}
+
+.signup__modal__buttons .signup__modal__ok__button:hover {
+    cursor: pointer;
+}
+
+.signup__modal__title {
+    font-size: 18px;
+    width: 460px;
+    height: 16px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.signup__modal__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 330px;
+    height: 260px;
+    /*padding-left: 30px;*/
+    text-align: center;
+    border: 1px solid #bcbcbc;
+    margin-bottom: 15px;
+    line-height: 145%;
+}

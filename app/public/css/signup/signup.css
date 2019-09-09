@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+@import './signupModal.css';
 
 * {
     font-family: 'Nanum Gothic';
@@ -15,7 +16,7 @@
 .signup__header {
     margin-top: 30px;
     margin-bottom: 40px;
-    color: #2CB400;
+    color: #42C62C;
 }
 
 .signup__section {
@@ -182,7 +183,7 @@
 }
 
 .signup__form__buttons .signup__button {
-    background-color: #2CB400;
+    background-color: #42C62C;
     border: none;
     color: white;
     text-align: center;
@@ -249,6 +250,7 @@
     margin-bottom: 15px;
     font-weight: bolder;
 }
+
 
 ::-webkit-scrollbar{width: 8px;}
 ::-webkit-scrollbar-track {background-color:#F5F6F7;}
@@ -458,54 +460,3 @@
 }
 
 
-.signup__modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.3);
-    padding-top: 10%;
-}
-
-.signup__modal__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFFFFF;
-    margin: 0 auto;
-    border: 1px solid #bcbcbc;
-    width: 500px;
-    height: 400px;
-}
-
-.signup__modal__message {
-    text-align: center;
-    width: 400px;
-    margin-bottom: 40px;
-    font-size: 20px;
-}
-.signup__modal__buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 330px;
-}
-.signup__modal__buttons .signup__modal__ok__button {
-    background-color: #2CB400;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-
-    width: 150px;
-    height: 52px;
-}
-
-.signup__modal__buttons .signup__modal__ok__button:hover {
-    cursor: pointer;
-}
