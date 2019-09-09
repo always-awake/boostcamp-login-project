@@ -1,4 +1,4 @@
-import {LOGOUT_URL} from '../mypage/utils.js';
+import {LOGOUT_URL} from './utils.js';
 import {makeLogoutModal} from './makeLogoutModal.js';
 
 const userLogout = () => {

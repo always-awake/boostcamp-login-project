@@ -1,6 +1,7 @@
 const {users} = require('../db/settings/users.js');
 const {sessions} = require('../db/settings/sessions.js');
 
+
 const makeSession = (sessionId, user) => {
     return {
         sessionId: sessionId,
@@ -13,6 +14,7 @@ const makeSession = (sessionId, user) => {
         }
     };
 };
+
 
 const getUser = (id, pw) => {
     return users.get('users')

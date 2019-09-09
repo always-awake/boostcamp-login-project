@@ -1,3 +1,5 @@
+import {DOMAIN} from '../utils.js';
+
 const ERROR = {
     NEW_ID_STRUCTURE_ERROR: {
         status: 'Wrong New User ID Structure Error',
@@ -177,8 +179,9 @@ const User = class {
     };
 };
 
-const ID_DUPLICATION_CHECK_URL = 'http://localhost:3000/users';
-const SIGN_UP_URL = 'http://localhost:3000/users/';
+const ID_DUPLICATION_CHECK_URL = `${DOMAIN}/users`;
+const SIGN_UP_URL = `${DOMAIN}/users/`;
+
 
 export {
     ERROR,

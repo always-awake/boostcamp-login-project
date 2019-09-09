@@ -1,3 +1,5 @@
+import {DOMAIN} from '../utils.js';
+
 const ERROR = {
     WRONG_ID_OR_PW_ERROR: {
         status: 'Entered Wrong ID or Password',
@@ -23,7 +25,7 @@ const loginRequest = (id, pw) => {
     }
 };
 
-const LOGIN_URL = 'http://localhost:3000/users/login';
+const LOGIN_URL = `${DOMAIN}/users/login`;
 
 export {
     ERROR,
