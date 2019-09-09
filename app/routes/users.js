@@ -3,6 +3,7 @@ const router = express.Router();
 const {users} = require('../db/settings/users.js');
 const {sessions} = require('../db/settings/sessions.js');
 const uuidv4 = require('uuid/v4');
+const {makeSession, getUser, deleteOldSession} = require('./utils.js');
 
 
 // 아이디 중복체크
@@ -30,27 +31,18 @@ router.get('/:id', function(req, res) {
 
 // 회원가입
 router.post('/', function(req, res, next) {
-
     try {
-      req.body['pk'] = users.get('count');
+        req.body['pk'] = users.get('count');
         const user = req.body;
-    users.get('users')
-        .push(req.body)
-        .write();
-    users.update('count', n => n + 1)
-        .write();
+        users.get('users')
+            .push(req.body)
+            .write();
+        users.update('count', n => n + 1)
+            .write();
 
-      const sessionId = uuidv4();
-      const session = {
-          sessionId: sessionId,
-          user: {
-              pk: user.pk,
-              id: user.id,
-              name: user.name,
-              email: user.email,
-              interests: user.interests,
-          }
-      };
+        const sessionId = uuidv4();
+        const session = makeSession(sessionId, user);
+
         sessions.get('sessions')
             .push(session)
             .write();
@@ -63,20 +55,16 @@ router.post('/', function(req, res, next) {
                 saveUninitialized: true,
             });
         }
-    res.json(
-        {
+    res.json({
             status: '201 CREATED',
             msg: 'Sign Up Success',
             user: session['user'],
-        }
-    )
+        })
   } catch (e) {
-    res.json(
-        {
+    res.json({
           status: 500,
           msg: e,
-        }
-    )
+        })
   }
 });
 
@@ -87,16 +75,8 @@ router.post('/login', function(req, res, next) {
         if (validUser !== undefined) {
             deleteOldSession(validUser.pk);
             const sessionId = uuidv4();
-            const session = {
-                sessionId: sessionId,
-                user: {
-                    pk: validUser.pk,
-                    id: validUser.id,
-                    name: validUser.name,
-                    email: validUser.email,
-                    interests: validUser.interests,
-                }
-            };
+            const session = makeSession(sessionId, validUser);
+
             sessions.get('sessions')
                 .push(session)
                 .write();
@@ -109,51 +89,28 @@ router.post('/login', function(req, res, next) {
                     saveUninitialized: true,
                 });
             }
-            res.json(
-                {
+            res.json({
                     status: 200,
                     msg: 'login success',
                     user: session['user'],
-                }
-            )
+                })
         } else {
-            // 로그인을 다시 해주세요라는 모달 띄우기 로직을 위한 json
-            res.json(
-                {
+            res.json({
                     status: 404,
                     msg: 'Please enter Id and PW again.'
-                }
-            )
+                })
         }
-
     } catch (e) {
-
-        res.json(
-            {
+        res.json({
                 status: 500,
                 msg: e,
-            }
-        )
+            })
     }
 
 });
 
-const getUser = (id, pw) => {
-    return users.get('users')
-        .find({id: id, password: pw})
-        .value();
-};
-
-const deleteOldSession = (pk) => {
-    sessions.get('sessions')
-        .remove({user:{ pk:pk }})
-        .write();
-};
-
 // 유저 로그아웃
 router.post('/logout', function (req, res, next) {
-    console.log('로그아웃 요청 받음');
-    console.log(req.signedCookies.user_auth);
     sessions.get('sessions')
         .remove({ sessionId: req.signedCookies.user_auth })
         .write();
