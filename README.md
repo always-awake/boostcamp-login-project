@@ -3,8 +3,8 @@
 ### 배포된 서버
 * 해로쿠를 이용한 배포
 * [무료 도메인 사용](https://my.freenom.com)
-* 주소: http://boostcamp-login.ga/ 
-* 헤로쿠 주소:https://calm-cliffs-44260.herokuapp.com/
+* 주소: http: http://boostcamp-login.ga/
+* 헤로쿠 주소: https://boostmember-login.herokuapp.com/
 
 ### 서비스 화면 
 * SPA로 구현
