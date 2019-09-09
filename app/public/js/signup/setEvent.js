@@ -38,7 +38,7 @@ const setSignUpEvent = () => {
     birthYearInput.addEventListener('focusout', () => {
         const requestUserBirthYear = birthYearInput.value;
         const validation_obj = validator.checkBirthYearValidation(requestUserBirthYear);
-        if (validation_obj === undefined) {
+        if (validation_obj['result'] === true) {
             userBirthMsgDiv.textContent = '';
             birthMonthInput.disabled = false;
             birthDayInput.disabled = false;
@@ -70,6 +70,9 @@ const setSignUpEvent = () => {
     });
     birthMonthInput.addEventListener('focusout', () => {
         birthMonthInput.parentElement.className = 'input__box__birth';
+        if (birthYearInput.value !== '') {
+            userBirthMsgDiv.textContent = '';
+        }
     });
 
     // day
