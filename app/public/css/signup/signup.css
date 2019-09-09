@@ -364,9 +364,11 @@
 
 .input__tag__interest {
     height: 30px;
+    width: max-content;
     border:none;
     font-size: 14px;
     margin-top: 5px;
+    margin-left: 7px;
 }
 
 .input__tag__interest:focus {

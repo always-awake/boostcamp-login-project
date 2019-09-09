@@ -35,7 +35,7 @@ const birthInput = () => {
 const interestInput = () => {
   return `<div class="signup__form__input" id="user_interests_input_box">
             <div class="input__name">관심사</div>
-                <div class="input__box__interest">
+                <div class="input__box__interest" id="input_box_interests">
                     <div class="interest__tags" id="interest_tags">
                         <input class="input__tag__interest" id="user_interest_input" type="text" />
                     </div>

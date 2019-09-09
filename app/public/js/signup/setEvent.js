@@ -109,8 +109,10 @@ const setSignUpEvent = () => {
     const userInterests = [];
     const interestInput = document.getElementById('user_interest_input');
     const interestTagDiv = document.getElementById('interest_tags');
+
     interestInput.addEventListener('keyup', () => {
         const target = interestInput.value;
+
         if (target[target.length-1] === ',') {
             const interestContainComma = interestInput.value;
             const interest = interestContainComma.substring(0, interestContainComma.length-1);
@@ -124,10 +126,9 @@ const setSignUpEvent = () => {
                 interestInput.value = '';
                 const interestTag = document.createElement('div');
                 interestTag.classList.add('interest__tag');
-                interestTag.textContent = `${interest.trim()}  `;
+                interestTag.textContent = `${interest.trim()}`;
 
                 interestTag.style.height = '30px';
-                // interestTag.style.width = (interest.length * 15 + 30) + 'px';
 
                 const tagCloseBtn = document.createElement('div');
                 tagCloseBtn.classList.add('interest__tag__close__button');
@@ -158,6 +159,7 @@ const setSignUpEvent = () => {
     });
 
     // // interest validation
+
     document.getElementById('user_interest_input').addEventListener('focusin', () => {
         document.getElementById('user_interest_input').parentElement.parentElement.className = 'input__box__interest__checked';
         const userInterestMsgDiv = document.getElementById('user_interest_msg');
@@ -171,6 +173,10 @@ const setSignUpEvent = () => {
             userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
             userInterestMsgDiv.style.color = '#FF0000';
         }
+    });
+    document.getElementById('input_box_interests').addEventListener('click', () => {
+
+        document.getElementById('user_interest_input').focus();
     });
 
     document.getElementById('user_interest_input').addEventListener('focusout', () => {
