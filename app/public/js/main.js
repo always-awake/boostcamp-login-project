@@ -13,5 +13,4 @@ window.onload = () => {
             }
         })
         .catch(err => console.error('Error: ', err));
-
 };

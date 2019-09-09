@@ -1,4 +1,4 @@
-import {ERROR, ID_DUPLICATION_CHECK_URL} from './utils.js';
+import {ERROR, ID_DUPLICATION_CHECK_URL} from '../utils.js';
 
 
 const checkDuplication = (idInputDiv) => {

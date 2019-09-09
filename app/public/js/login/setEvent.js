@@ -1,4 +1,4 @@
-import {makeSignUpHTML} from '../signup/makeSignupHtml.js';
+import {makeSignUpHTML} from '../signup/make/makeSignupHtml.js';
 import {userLogin} from './userLogin.js';
 import {requestIdInput, requestPwInput} from './makeLoginErrorMsg.js';
 

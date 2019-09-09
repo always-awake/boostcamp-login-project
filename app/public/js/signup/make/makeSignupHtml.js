@@ -1,6 +1,6 @@
-import {signupHeader} from '../components/signup/header.js';
-import {signupForm} from '../components/signup/form.js';
-import {setSignUpEvent} from './setEvent.js';
+import {signupHeader} from '../../components/signup/header.js';
+import {signupForm} from '../../components/signup/form.js';
+import {setEvent} from '../setEvent/setEvent.js';
 
 const makeSignUpHTML = () => {
     const signUpHead = document.getElementById('head');
@@ -14,7 +14,7 @@ const makeSignUpHTML = () => {
     signUpBody.className = 'signup__body';
     signUpBody.innerHTML = signupHeader('회원가입');
     signUpBody.innerHTML += signupForm();
-    setSignUpEvent();
+    setEvent();
 };
 
 export {

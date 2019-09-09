@@ -78,6 +78,30 @@ const checkPhoneValidation = (phoneInputDiv) => {
     }
 };
 
+const checkInterestsValidation = (interestInput, interestTagsDiv) => {
+    interestInput.addEventListener('focusin', () => {
+        interestInput.parentElement.parentElement.className = 'input__box__interest__checked';
+        const userInterestMsgDiv = document.getElementById('user_interest_msg');
+        const interestTagsCount = interestTagsDiv.childElementCount;
+        const validation_obj = validator.checkInterestCount(interestTagsCount);
+
+        if (validation_obj['result']) {
+            userInterestMsgDiv.textContent = '';
+        } else if (!validation_obj['result']) {
+            userInterestMsgDiv.textContent = `${validation_obj['error_obj']['msg']}`;
+            userInterestMsgDiv.style.color = `${validation_obj['error_obj']['msg_color']}`;
+        }
+    });
+    const interestInputBoxDiv = document.getElementById('input_box_interests');
+    interestInputBoxDiv.addEventListener('click', () => {
+        interestInput.focus();
+    });
+
+    interestInput.addEventListener('focusout', () => {
+        interestInput.parentElement.parentElement.className = 'input__box__interest';
+    });
+};
+
 const checkEmptyValidation = (user) => {
     const userProps = Object.keys(user);
     const emptyPropList = [];
@@ -126,4 +150,5 @@ export {
     checkPhoneValidation,
     checkEmptyValidation,
     checkAllInputValidation,
+    checkInterestsValidation,
 };
