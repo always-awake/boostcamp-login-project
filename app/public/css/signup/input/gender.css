@@ -1,0 +1,17 @@
+/*성별 입력 박스 css*/
+
+
+.signup__form__input .input__gender {
+    width: 430px;
+    height: 30px;
+
+    font-size: 14px;
+    -webkit-appearance: none;
+    border:none;
+    background: url('../../images/drop_down_button.svg') no-repeat 98% 50%;
+    background-size: 13px;
+}
+
+.input__gender:focus {
+    outline:none;
+}

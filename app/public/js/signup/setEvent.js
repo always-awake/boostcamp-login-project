@@ -290,7 +290,7 @@ const setContractEvent = () => {
         const contractText = event.target;
         if (contractText.scrollHeight - contractText.scrollTop === contractText.clientHeight) {
             contractAgreeBtn.disabled = false;
-            contractAgreeBtn.className = 'contract__agree__button__activate';
+            contractAgreeBtn.className = 'contract__modal__agree__button__activate ';
         }
     });
     contractAgreeBtn.disabled = true;

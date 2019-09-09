@@ -3,14 +3,14 @@ import { CONTRACT } from '../../signup/utils.js';
 
 const contractModal = () => {
     return `<div class="contract__modal" id="contract_modal">
-                <div class="contract__modal__content">
-                    <div class="contract__close" id="contract_modal_close_btn">x</div>
-                    <div class="contract">
-                    <div class="contract__title">개인정보 수집 및 이용에 대한 안내</div>
-                        <div class="contract__text" id="contract_text">
+                <div class="contract__modal__body">
+                    <div class="contract__modal__close" id="contract_modal_close_btn">x</div>
+                    <div class="contract__modal__content">
+                    <div class="contract__content__title">개인정보 수집 및 이용에 대한 안내</div>
+                        <div class="contract__content__text" id="contract_text">
                         ${CONTRACT['text']}
                         </div>
-                        <button class="contract__agree__button" id="contract_modal_agree_btn" type="button">동의</button>
+                        <button class="contract__modal__agree__button" id="contract_modal_agree_btn" type="button">동의</button>
                     </div>
                 </div>
             </div>`;

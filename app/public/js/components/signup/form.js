@@ -5,7 +5,7 @@ const birthInput = () => {
                 <div class="input__name">생년월일</div>
                 <div class="input__birth">
                     <div class="input__box__birth">
-                        <input class="input__tag__birth user__info__birth" id="user_birth_year_input" type="text" name="user_birth_year" placeholder="년(4자)"/>
+                        <input class="input__tag__birth user__info__birth" id="user_birth_year_input" type="text" placeholder="년(4자)"/>
                     </div>
                     <div class="input__box__birth">
                         <select class="birth__month user__info__birth"  id="user_birth_month_input">
@@ -102,8 +102,8 @@ const signupForm = () => {
                 <div class ="validation__message" id="user_phone_msg"></div>
             </div>
             ${interestInput()}
-            <div class="signup__form__conditions">
-                <div class="conditions__text">
+            <div class="signup__form__contract__agree">
+                <div class="contract__agree__text">
                     약관에 동의합니다.
                 </div>
                 <div class="input__box">
