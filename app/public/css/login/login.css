@@ -34,7 +34,7 @@ h2 {
     padding: 30px;
     width: 90%;
     max-width: 500px;
-    height: 510px;
+    max-height: 550px;
     position: relative;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
 
@@ -285,4 +285,9 @@ input[type=text]:focus, input[type=email]:focus{
 }
 .find__id__button:hover {
     cursor: pointer;
+}
+
+#id_error_msg {
+    padding-right: 253px;
+    font-size: 12px;
 }

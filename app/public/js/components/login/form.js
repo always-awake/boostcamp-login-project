@@ -6,6 +6,7 @@ const loginForm = () => {
                     </div>
                     <form>
                         <input type="text" id="login_id" class="fadeIn second zero-raduis" placeholder="아이디">
+                        <div id="id_error_msg"></div>
                         <input type="text" id="login_pw" class="fadeIn third zero-raduis" name="login" placeholder="비밀번호">
                         <div id="formFooter">
                         </div>
