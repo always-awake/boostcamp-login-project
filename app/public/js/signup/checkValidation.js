@@ -1,4 +1,5 @@
 import validator from './validators.js';
+import {checkDuplicationSimple} from './checkDuplication.js';
 
 const checkIdValidation = (idInputDiv) => {
     const idInputValue = idInputDiv.value;
@@ -99,32 +100,21 @@ const checkEmptyValidation = (user) => {
     return emptyPropList
 };
 
-const checkAllInputValidation = (user) => {
-    const validationResultList = [];
-    validationResultList.push(validator.checkIdValidation(user.id)['result']);
-    validationResultList.push(validator.checkPwValidation(user.password)['result']);
-    validationResultList.push(validator.checkPwSameness(user.password, user.re_password)['result']);
-    validationResultList.push(validator.checkEmailValidation(user.email)['result']);
-    validationResultList.push(validator.checkPhoneValidation(user.phone)['result']);
+const checkAllInputValidation = async (user) => {
+    const invalidInputIdList = [];
+    if (!validator.checkIdValidation(user.id)['result']) invalidInputIdList.push('user_id_input_box');
+    if (!validator.checkPwValidation(user.password)['result']) invalidInputIdList.push('user_pw_input_box');
+    if (!validator.checkPwSameness(user.password, user.re_password)['result']) invalidInputIdList.push('user_re_pw_input_box');
+    if (!validator.checkBirthYearValidation(user.birth.year)['result']) invalidInputIdList.push('user_birth_input_box');
+    if (!validator.checkBirthDayValidation(user.birth.day)['result']) invalidInputIdList.push('user_birth_input_box');
+    if (user.gender === 'default') invalidInputIdList.push('user_gender_input_box');
+    if (!validator.checkEmailValidation(user.email)['result']) invalidInputIdList.push('user_email_input_box');
+    if (!validator.checkPhoneValidation(user.phone)['result']) invalidInputIdList.push('user_phone_input_box');
+    if (user.interests.length < 3) invalidInputIdList.push('user_interests_input_box');
 
-    validationResultList.push(validator.checkBirthYearValidation(user.birth.year)['result']);
-    validationResultList.push(validator.checkBirthDayValidation(user.birth.day)['result']);
-
-    if (user.interests.length >= 3) {
-        validationResultList.push(true);
-    } else {
-        validationResultList.push(false);
-    }
-
-    if (user.gender === 'default') {
-        validationResultList.push(false);
-    } else {
-        validationResultList.push(true);
-    }
-
-    return validationResultList.every((result) => {
-        return result === true;
-    });
+    const result = await checkDuplicationSimple(user.id);
+    if (!result) invalidInputIdList.unshift('user_id_input_box');
+    return invalidInputIdList
 };
 
 

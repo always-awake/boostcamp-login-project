@@ -1,5 +1,4 @@
-import {ID_DUPLICATION_CHECK_URL} from './utils.js';
-import {ERROR} from './utils.js';
+import {ERROR, ID_DUPLICATION_CHECK_URL} from './utils.js';
 
 
 const checkDuplication = (idInputDiv) => {
@@ -17,8 +16,15 @@ const checkDuplication = (idInputDiv) => {
         .catch(err => console.error('Error: ', err));
 };
 
+const checkDuplicationSimple = async (id) => {
+    const result = await fetch(`${ID_DUPLICATION_CHECK_URL}/${id}`)
+    const data = await result.json();
+    return !(data['duplication'])
+};
+
 
 
 export {
-    checkDuplication
+    checkDuplication,
+    checkDuplicationSimple
 }
