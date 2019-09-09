@@ -1,0 +1,66 @@
+/*순서*/
+/*1. 생년월일 input box 공통(년, 월, 일) css*/
+/*2. 월 input box css*/
+
+
+/*1. 생년월일 input box 공통(년, 월, 일) css*/
+.input__birth {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input__tag__birth:focus {
+    outline:none;
+}
+
+.signup__form__input .input__box__birth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 146px;
+    height: 50px;
+
+    border: 1px solid #DADADA;
+    background-color: #FFFFFF;
+}
+
+.signup__form__input .input__box__birth__checked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 146px;
+    height: 50px;
+
+    border: 1px solid #2CB400;
+    background-color: #FFFFFF;
+}
+
+.signup__form__input .input__birth .input__tag__birth {
+    width: 120px;
+    height: 30px;
+
+    font-size: 14px;
+    border:none;
+}
+
+.signup__form__input .input__birth .input__tag__birth:focus {
+    outline:none;
+}
+
+/*2. 월 input box css*/
+.birth__month {
+    width: 120px;
+    height: 30px;
+
+    font-size: 14px;
+    -webkit-appearance: none;
+    border:none;
+    background: url('../../../images/drop_down_button.svg') no-repeat 95% 50%;
+    background-size: 13px;
+}
+
+.birth__month:focus {
+    outline:none;
+}
+

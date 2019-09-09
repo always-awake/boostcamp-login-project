@@ -1,11 +1,11 @@
 import { contractModal, resetModal, signupModal } from './modal.js';
 
 const birthInput = () => {
-    return `<div class="signup__form__input">
+    return `<div class="signup__form__input" id="user_birth_input_box">
                 <div class="input__name">생년월일</div>
                 <div class="input__birth">
                     <div class="input__box__birth">
-                        <input class="input__tag__birth user__info__birth" id="user_birth_year_input" type="text" name="user_birth_year" placeholder="년(4자)"/>
+                        <input class="input__tag__birth user__info__birth" id="user_birth_year_input" type="text" placeholder="년(4자)"/>
                     </div>
                     <div class="input__box__birth">
                         <select class="birth__month user__info__birth"  id="user_birth_month_input">
@@ -33,9 +33,9 @@ const birthInput = () => {
 };
 
 const interestInput = () => {
-  return `<div class="signup__form__input">
+  return `<div class="signup__form__input" id="user_interests_input_box">
             <div class="input__name">관심사</div>
-                <div class="input__box__interest">
+                <div class="input__box__interest" id="input_box_interests">
                     <div class="interest__tags" id="interest_tags">
                         <input class="input__tag__interest" id="user_interest_input" type="text" />
                     </div>
@@ -61,7 +61,7 @@ const signupForm = () => {
                 </div>
                 <div class ="validation__message" id="user_password_msg"></div>
             </div>
-            <div class="signup__form__input">
+            <div class="signup__form__input" id="user_re_pw_input_box">
                 <div class="input__name">비밀번호 재확인</div>
                 <div class="input__box">
                     <input class="input__tag user__info" id="user_re_pw_input" type="text" />
@@ -76,7 +76,7 @@ const signupForm = () => {
                 <div class ="validation__message" id="user_name_msg"></div>
             </div>
                ${birthInput()}
-            <div class="signup__form__input">
+            <div class="signup__form__input" id="user_gender_input_box">
                 <div class="input__name">성별</div>
                 <div class="input__box">
                     <select class="input__gender user__info" id="user_gender_select">
@@ -87,14 +87,14 @@ const signupForm = () => {
                 </div>
                 <div class ="validation__message" id="user_gener_msg"></div>
             </div>
-            <div class="signup__form__input">
+            <div class="signup__form__input" id="user_email_input_box">
                 <div class="input__name">이메일</div>
                 <div class="input__box">
                     <input class="input__tag user__info" id="user_email_input" type="text" />
                 </div>
                 <div class ="validation__message" id="user_email_msg"></div>
             </div>
-            <div class="signup__form__input">
+            <div class="signup__form__input" id="user_phone_input_box">
                 <div class="input__name">휴대전화</div>
                 <div class="input__box">
                     <input class="input__tag user__info" id="user_phone_input" type="text" placeholder="- 없이 입력해주세요. 예) 0101231234"/>
@@ -102,8 +102,8 @@ const signupForm = () => {
                 <div class ="validation__message" id="user_phone_msg"></div>
             </div>
             ${interestInput()}
-            <div class="signup__form__conditions">
-                <div class="conditions__text">
+            <div class="signup__form__contract__agree">
+                <div class="contract__agree__text">
                     약관에 동의합니다.
                 </div>
                 <div class="input__box">

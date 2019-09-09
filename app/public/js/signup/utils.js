@@ -1,3 +1,5 @@
+import {DOMAIN} from '../utils.js';
+
 const ERROR = {
     NEW_ID_STRUCTURE_ERROR: {
         status: 'Wrong New User ID Structure Error',
@@ -53,7 +55,12 @@ const ERROR = {
         status: 'Wrong Interest Count Error (More 3 interest)',
         msg: '3개 이상의 관심사를 입력하세요.',
         msg_color: '#FF0000'
-    }
+    },
+    ID_DUPLICATION_ERROR: {
+      status: 'Id Duplication Error (Input another Id)',
+      msg: '이미 사용중이거나 탈퇴한 아이디입니다.',
+      msg_color: '#FF0000',
+    },
 };
 
 const PASS = {
@@ -123,17 +130,58 @@ const CONTRACT = {
 const SIGNUP_ERROR_MODAL_TEXT = (emptyPropList) => {
     let modalText = '';
     emptyPropList.forEach((prop) => {
-        modalText += `\n${prop}`
+        modalText += `${CONVERT_ENGPROPNAME_TO_KORMSG(prop)}`
     });
     return modalText
 };
 
-const CONVERT_ENGPROPNAME_TO_KORPROPNAME = () => {
-
+const CONVERT_ENGPROPNAME_TO_KORMSG = (prop) => {
+    switch (prop) {
+        case 'id':
+            return '<b>아이디</b>';
+        case 'password':
+            return '<b>비밀번호</b>';
+        case 're_password':
+            return '<b>비밀번호</b> ';
+        case 'name':
+            return '<b>이름</b>';
+        case 'birth':
+            return '<b>생년월일</b>';
+        case 'gender':
+            return '<b>성별</b>';
+        case 'email':
+            return '<b>이메일</b>';
+        case 'phone':
+            return '<b>휴대전화 번호</b>';
+        case 'interests':
+            return '<b>관심사</b>';
+        case 'contract':
+            return '<b>약관</b>';
+    }
 };
 
-const ID_DUPLICATION_CHECK_URL = 'http://localhost:3000/users';
-const SIGN_UP_URL = 'http://localhost:3000/users/';
+const User = class {
+    constructor() {
+        this.id = '';
+        this.password = '';
+        this.re_password = '';
+        this.name = '';
+        this.birth = {
+            year: '',
+            month: '',
+            day: '',
+        };
+        this.gender = '';
+        this.email = '';
+        this.phone = '';
+        this.interests = [];
+        this.contract = false;
+    };
+};
+
+const ID_DUPLICATION_CHECK_URL = `${DOMAIN}/users`;
+const SIGN_UP_URL = `${DOMAIN}/users/`;
+
 
 export {
     ERROR,
@@ -142,5 +190,6 @@ export {
     CONTRACT,
     SIGNUP_ERROR_MODAL_TEXT,
     ID_DUPLICATION_CHECK_URL,
-    SIGN_UP_URL
+    SIGN_UP_URL,
+    User
 };

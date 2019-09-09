@@ -1,0 +1,85 @@
+@import "./birth.css";
+@import "./contract.css";
+@import "./interest.css";
+@import "./gender.css";
+
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+
+* {
+    font-family: 'Nanum Gothic';
+}
+
+.signup__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #F5F6F7;
+}
+
+.signup__header {
+    margin-top: 30px;
+    margin-bottom: 40px;
+
+    color: #42C62C;
+}
+
+.signup__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup__form__input .input__name {
+    margin: 5px 0 8px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.signup__form__input {
+    display: flex;
+    flex-direction: column;
+}
+
+.validation__message {
+    width: 462px;
+    height: 20px;
+    margin: 9px 0 -2px;
+
+    font-size: 12px;
+}
+
+.signup__form__input .input__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 460px;
+    height: 50px;
+
+    border: 1px solid #DADADA;
+    background-color: #FFFFFF;
+}
+
+.signup__form__input .input__box__checked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 460px;
+    height: 50px;
+
+    border: 1px solid #2CB400;
+    background-color: #FFFFFF;
+}
+
+.input__tag {
+    width: 430px;
+    height: 30px;
+
+    font-size: 14px;
+    border:none;
+}
+
+.input__tag:focus {
+    outline:none;
+}

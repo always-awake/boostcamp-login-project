@@ -1,26 +1,22 @@
+/*부스트스랩 css*/
+
 .zero-raduis{
     border-radius: 0px !important;
 }
 
-a {
-    color: #66BD5D;
-    display:inline-block;
-    text-decoration: none;
-    font-weight: 400;
-}
-
 h2 {
+    display:inline-block;
     text-align: center;
+
+    text-transform: uppercase;
     font-size: 16px;
     font-weight: 500;
-    text-transform: uppercase;
-    display:inline-block;
     color: #66BD5D;
 }
 
-
-
-/* STRUCTURE */
+.login__body {
+    background-color: #F5F6F7;
+}
 
 .wrapper {
     margin-top: 100px;
@@ -33,30 +29,6 @@ h2 {
     padding: 20px;
 }
 
-#formContent {
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 30px;
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    padding: 0px;
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
-    text-align: center;
-}
-
-#formFooter {
-    padding: 2px ;
-    text-align: right;
-    width: 90%;
-}
-
-
-
-/* TABS */
-
 h2.inactive {
     color: #cccccc;
 }
@@ -66,34 +38,31 @@ h2.active {
     border-bottom: 2px solid #5fbae9;
 }
 
-
-
-/* FORM TYPOGRAPHY*/
-
 input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #2CB400;
-    border: none;
-    color: white;
-    width: 85%;
-    padding: 10px 25px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
-    text-transform: uppercase;
-    font-size: 16px;
-    cursor: pointer;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
+    text-align: center;
+    padding: 10px 25px;
     margin: 5px 20px 40px 20px;
+    width: 85%;
+
+    -webkit-border-radius: 5px 5px 5px 5px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    background-color: #3EC628;
+    cursor: pointer;
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #09A600;
+    background-color: #3EC628;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -105,36 +74,32 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 }
 
 input[type=text], input[type=email] {
-    background-color: #f6f6f6;
-    border: none;
-    color: #0d0d0d;
-    padding: 10px 25px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    text-align: center;
+    padding: 10px 25px;
     margin: 5px;
     width: 85%;
-    border: 2px solid #f6f6f6;
+
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     -webkit-border-radius: 5px 5px 5px 5px;
+
+    font-size: 16px;
+    text-decoration: none;
+    border: 2px solid #f6f6f6;
     border-radius: 5px 5px 5px 5px;
+    color: #0d0d0d;
+    background-color: #f6f6f6;
 }
 
 input[type=text]:focus, input[type=email]:focus{
     background-color: #fff;
-    border-bottom: 1px solid #09A600;
+    border-bottom: 1px solid #3EC628;
 }
 
-
-
 /* ANIMATIONS */
-
-/* Simple CSS3 Fade-in-down Animation */
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -219,7 +184,7 @@ input[type=text]:focus, input[type=email]:focus{
     display: block;
     width: 0;
     height: 1px;
-    background-color: #09A600;
+    background-color: #3EC628;
     content: "";
     transition: width 0.2s;
 }
@@ -232,14 +197,79 @@ input[type=text]:focus, input[type=email]:focus{
     width: 100%;
 }
 
-
-
-/* OTHERS */
-
 *:focus {
     outline: none;
 }
 
-#icon {
-    width:30%;
+.login__title {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.find__vertical__line {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #E4E4E5;
+}
+
+.login__find__buttons {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: #8E8E8E;
+}
+
+.find__pw__button:hover {
+    cursor: pointer;
+}
+
+.find__id__button:hover {
+    cursor: pointer;
+}
+
+#formContent {
+    position: relative;
+    text-align: center;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 550px;
+
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+    background: #fff;
+}
+
+#login_line {
+    margin-bottom: 20px;
+    width: 440px;
+
+    border-top: 1px solid #E4E4E5;
+}
+
+#signup__text {
+    display:inline-block;
+    text-align: center;
+    margin-bottom: 10px;
+
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #66BD5D;
+}
+
+#formFooter {
+    padding: 2px ;
+    text-align: left;
+    margin-left: 36px;
+    width: 90%;
+
+    font-size: 12px;
+}
+
+#id_error_msg {
+    padding-right: 253px;
+
+    font-size: 12px;
 }

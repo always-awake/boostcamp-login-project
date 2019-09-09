@@ -1,4 +1,4 @@
-import { ERROR, PASS, REG_EXR } from './utils.js';
+import { ERROR, PASS, REG_EXR } from '../utils.js';
 
 const checkIdValidation = (id) => {
     const idCheckResult = REG_EXR['ID_CHECK'].test(id);

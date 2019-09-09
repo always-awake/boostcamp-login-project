@@ -1,0 +1,25 @@
+/*회원가입 페이지의 초기화, 가입하기 버튼 css*/
+
+
+.signup__form__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.signup__form__buttons .signup__button {
+    text-align: center;
+    width: 223px;
+    height: 62px;
+
+    font-size: 19px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: #42C62C;
+}
+
+.signup__form__buttons .signup__button:hover {
+    cursor: pointer;
+}

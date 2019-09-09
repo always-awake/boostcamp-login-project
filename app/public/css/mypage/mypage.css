@@ -1,0 +1,115 @@
+@import '../logout/logout.css';
+
+* {
+    font-family: 'Nanum Gothic';
+}
+
+.mypage__header {
+    margin-top: 30px;
+    margin-bottom: 40px;
+
+    color: #42C62C;
+}
+
+.mypage__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #F5F6F7;
+}
+
+.mypage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: 510px;
+
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+    background-color: #ffffff;
+}
+
+.mypage .mypage__profile__image {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    width: 170px;
+    height: 170px;
+}
+
+#profile_img {
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+}
+
+.mypage__user__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 380px;
+    height: 200px;
+}
+
+.mypage__user__info .user__name {
+    margin-top: 20px;
+    margin-left: 22px;
+}
+
+.mypage__user__info .user__name .username {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.mypage__user__info .user__name .suffix {
+    font-size: 18px;
+}
+
+.mypage__user__info .user__id {
+    margin-top: 5px;
+
+    font-size: 18px;
+    color: #777777;
+}
+
+.mypage__user__info .user__email {
+    margin-top: 5px;
+}
+
+.user__interests {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    margin-top: 30px;
+}
+
+.user__interests .user__interest {
+    padding: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    font-size: 16px;
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    background-color: #EFEFEF;
+}
+
+.logout__btn {
+    text-align: center;
+    width: 380px;
+    height: 62px;
+    line-height: 62px;
+
+    font-size: 19px;
+    text-decoration: none;
+    border: none;
+    color: #ffffff;
+    background-color: #42C62C;
+}
+
+.logout__btn:hover {
+    cursor: pointer;
+}

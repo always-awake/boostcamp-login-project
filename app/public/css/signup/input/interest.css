@@ -1,0 +1,98 @@
+/*순서*/
+/*1. 회원가입 폼의 관심사 입력 박스 css*/
+/*2. 관심사 태그 css*/
+
+
+/*1. 회원가입 폼의 관심사 입력 박스 css*/
+.input__box__interest {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-items: center;
+    width: 460px;
+    min-height: 50px;
+
+    border: 1px solid #DADADA;
+    background-color: #FFFFFF;
+}
+
+.input__box__interest__checked {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-items: center;
+    width: 460px;
+    min-height: 50px;
+
+    border: 1px solid #2CB400;
+    background-color: #FFFFFF;
+}
+
+.input__interest {
+    line-height: 30px;
+    width: 430px;
+    height: 30px;
+}
+
+.input__interest:focus {
+    outline:none;
+}
+
+.interest__tags {
+    display: flex;
+    flex-flow: wrap;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.input__tag__interest {
+    margin-top: 5px;
+    margin-left: 7px;
+    width: max-content;
+    height: 30px;
+
+    font-size: 14px;
+    border:none;
+}
+
+.input__tag__interest:focus {
+    outline:none;
+}
+
+
+/*2. 관심사 태그 css*/
+.interest__tags .interest__tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
+
+    font-size: 14px;
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    background-color: #EFEFEF;
+}
+
+.interest__tag__close__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+
+    border: 1px solid #B7B7B7;
+    border-radius: 50%;
+}
+
+.interest__tag__close__button:hover {
+    cursor: pointer;
+    background-color: #CDCDCD;
+}

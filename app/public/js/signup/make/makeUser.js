@@ -1,4 +1,4 @@
-import {User} from './User.js';
+import {User} from '../utils.js';
 
 const makeUser = () => {
     const user = new User();
