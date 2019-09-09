@@ -357,9 +357,9 @@
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
-    padding-left: 5px;
+    padding-left: 10px;
     border: 1px solid #DADADA;
-
+    padding-right: 5px;
 }
 
 .input__tag__interest {
@@ -380,9 +380,10 @@
     align-items: center;
     width: 20px;
     height: 20px;
-    margin-right: 5px;
+    /*margin-right: px;*/
     border: 1px solid #B7B7B7;
     border-radius: 50%;
+    margin-left: 8px;
 }
 
 .interest__tag__close__button:hover {

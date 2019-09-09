@@ -119,15 +119,15 @@ const setSignUpEvent = () => {
             if (interest === '' || interest[interest.length-1] === ',') {
                 setTimeout(function(){
                     interestInput.value = '';
-                }, 500);
+                }, 300);
             } else {
                 interestInput.value = '';
                 const interestTag = document.createElement('div');
                 interestTag.classList.add('interest__tag');
-                interestTag.textContent = `${interest.trim()}`;
+                interestTag.textContent = `${interest.trim()}  `;
 
                 interestTag.style.height = '30px';
-                interestTag.style.width = (interest.length * 15 + 30) + 'px';
+                // interestTag.style.width = (interest.length * 15 + 30) + 'px';
 
                 const tagCloseBtn = document.createElement('div');
                 tagCloseBtn.classList.add('interest__tag__close__button');
