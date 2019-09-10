@@ -5,13 +5,14 @@ import {
     checkEmailValidation,
     checkPhoneValidation,
 } from '../check/checkValidation.js';
-
 import {checkDuplication} from '../check/checkDuplication.js';
 import {setInterestsEvent} from './setInterestsEvent.js';
 import {setContractEvent} from './setContractEvent.js';
 import {setBirthEvent} from './setBirthEvent.js';
 
-
+/**
+ * 회원가입 입력(Input) Div의 이벤트를 설정하는 함수
+ */
 const setInputEvent = () => {
     setIdEvent();
     setPwEvent();
@@ -25,7 +26,9 @@ const setInputEvent = () => {
     setInterestsEvent();
 };
 
-
+/**
+ * 아이디 Input Div의 이벤트를 설정하는 함수
+ */
 const setIdEvent = () => {
     const idInputDiv = document.getElementById('user_id_input');
 
@@ -39,6 +42,9 @@ const setIdEvent = () => {
     });
 };
 
+/**
+ * 비밀번호 Input Div의 이벤트를 설정하는 함수
+ */
 const setPwEvent = () => {
     const pwInputDiv = document.getElementById('user_pw_input');
 
@@ -51,6 +57,9 @@ const setPwEvent = () => {
     });
 };
 
+/**
+ * 비밀번호 재입력 Input Div의 이벤트를 설정하는 함수
+ */
 const setRePwEvent = () => {
     const rePwInputDiv = document.getElementById('user_re_pw_input');
     rePwInputDiv.addEventListener('focusin', () => {
@@ -62,6 +71,9 @@ const setRePwEvent = () => {
     });
 };
 
+/**
+ * 이름 Input Div의 이벤트를 설정하는 함수
+ */
 const setNameEvent = () => {
     const nameInputDiv = document.getElementById('user_name_input');
     nameInputDiv.addEventListener('focusin', () => {
@@ -72,6 +84,9 @@ const setNameEvent = () => {
     });
 };
 
+/**
+ * 성별 Input Div의 이벤트를 설정하는 함수
+ */
 const setGenderEvent = () => {
     const genderInputDiv = document.getElementById('user_gender_select');
     genderInputDiv.addEventListener('focusin', () => {
@@ -82,6 +97,9 @@ const setGenderEvent = () => {
     });
 };
 
+/**
+ * 이메일 Input Div의 이벤트를 설정하는 함수
+ */
 const setEmailEvent = () => {
     const emailInputDiv = document.getElementById('user_email_input');
 
@@ -94,6 +112,9 @@ const setEmailEvent = () => {
     });
 };
 
+/**
+ * 휴대전화 Input Div의 이벤트를 설정하는 함수
+ */
 const setPhoneEvent = () => {
     const phoneInputDiv = document.getElementById('user_phone_input');
     phoneInputDiv.addEventListener('focusin', () => {

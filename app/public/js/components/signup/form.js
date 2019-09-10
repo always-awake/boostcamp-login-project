@@ -57,14 +57,14 @@ const signupForm = () => {
             <div class="signup__form__input" id="user_pw_input_box">
                 <div class="input__name">비밀번호</div>
                 <div class="input__box">
-                    <input class="input__tag user__info" id="user_pw_input" type="text" />
+                    <input class="input__tag user__info" id="user_pw_input" type="password" />
                 </div>
                 <div class ="validation__message" id="user_password_msg"></div>
             </div>
             <div class="signup__form__input" id="user_re_pw_input_box">
                 <div class="input__name">비밀번호 재확인</div>
                 <div class="input__box">
-                    <input class="input__tag user__info" id="user_re_pw_input" type="text" />
+                    <input class="input__tag user__info" id="user_re_pw_input" type="password" />
                 </div>
                 <div class ="validation__message" id="user_re_password_msg"></div>
             </div>

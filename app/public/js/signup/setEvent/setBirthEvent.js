@@ -1,12 +1,28 @@
 import validator from '../check/validators.js';
 
+/**
+ * 회원가입 폼의 생년월일(연도, 월, 일) Input 박스(div)의 이벤트를 추가하는 함수
+ */
 const setBirthEvent = () => {
     const birthYearInput = document.getElementById('user_birth_year_input');
     const birthMonthInput = document.getElementById('user_birth_month_input');
     const birthDayInput = document.getElementById('user_birth_day_input');
     const userBirthMsgDiv = document.getElementById('user_birth_msg');
 
-    //year
+    setBirthYearEvent(birthYearInput, birthMonthInput, birthDayInput, userBirthMsgDiv);
+    setBirthMonthEvent(birthYearInput, birthMonthInput, birthDayInput, userBirthMsgDiv);
+    setBirthDayEvent(birthYearInput, birthMonthInput, birthDayInput, userBirthMsgDiv);
+};
+
+/**
+ * 회원가입 폼의 연도(생년월일) Input 박스(div)의 이벤를 추가하는 함수
+ *
+ * @param birthYearInput
+ * @param birthMonthInput
+ * @param birthDayInput
+ * @param userBirthMsgDiv
+ */
+const setBirthYearEvent = (birthYearInput, birthMonthInput, birthDayInput, userBirthMsgDiv) => {
     birthYearInput.addEventListener('focusin', () => {
         birthYearInput.parentElement.className = 'input__box__birth__checked';
     });
@@ -25,8 +41,17 @@ const setBirthEvent = () => {
             birthDayInput.disabled = true;
         }
     });
+};
 
-    // month
+/**
+ * 회원가입 폼의 달(생년월일) Input 박스(div)의 이벤를 추가하는 함수
+ *
+ * @param birthYearInput
+ * @param birthMonthInput
+ * @param birthDayInput
+ * @param userBirthMsgDiv
+ */
+const setBirthMonthEvent = (birthYearInput, birthMonthInput, birthDayInput, userBirthMsgDiv) => {
     birthMonthInput.addEventListener('focusin', () => {
         birthMonthInput.parentElement.className = 'input__box__birth__checked';
         if (birthYearInput.value === '') {
@@ -39,8 +64,17 @@ const setBirthEvent = () => {
         birthMonthInput.parentElement.className = 'input__box__birth';
         if (birthYearInput.value !== '') userBirthMsgDiv.textContent = '';
     });
+};
 
-    // day
+/**
+ * 회원가입 폼의 일(생년월일) Input 박스(div)의 이벤를 추가하는 함수
+ *
+ * @param birthYearInput
+ * @param birthMonthInput
+ * @param birthDayInput
+ * @param userBirthMsgDiv
+ */
+const setBirthDayEvent = (birthYearInput, birthMonthInput, birthDayInput, userBirthMsgDiv) => {
     birthDayInput.addEventListener('focusin', () => {
         birthDayInput.parentElement.className = 'input__box__birth__checked';
         if (birthYearInput.value === '') {
@@ -64,6 +98,7 @@ const setBirthEvent = () => {
         }
     });
 };
+
 
 export {
     setBirthEvent

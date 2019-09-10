@@ -1,5 +1,10 @@
 import {User} from '../utils.js';
 
+/**
+ * 입력값을 바탕으로 db에 저장할 유저 객체를 생성한 후, 필드 값을 채워 리턴하는 함수
+ *
+ * @return {user obj}
+ */
 const makeUser = () => {
     const user = new User();
     const afterBaseSettingUser = setUserBaseInfo(user);
@@ -8,6 +13,12 @@ const makeUser = () => {
     return setUserContractInfo(afterInterestsSettingUser);
 };
 
+/**
+ * 입력값을 바탕으로 유저의 생년월일과 관심사, 약관과 관련된 필드를 제외한 필드를 채워주는 함수
+ *
+ * @param user
+ * @return {user obj}
+ */
 const setUserBaseInfo = (user) => {
     const userBaseInfo = document.getElementsByClassName('user__info');
     user.id = userBaseInfo[0].value;
@@ -20,6 +31,12 @@ const setUserBaseInfo = (user) => {
     return user
 };
 
+/**
+ * 입력값을 바탕으로 유저의 생년월일 필드를 채워주는 함수
+ *
+ * @param user
+ * @return {user obj}
+ */
 const setUserBirthInfo = (user) => {
     const userBirthInfo = document.getElementsByClassName('user__info__birth');
     user.birth.year = userBirthInfo[0].value;
@@ -28,6 +45,12 @@ const setUserBirthInfo = (user) => {
     return user
 };
 
+/**
+ * 입력값을 바탕으로 유저의 관심사 필드를 채워주는 함수
+ *
+ * @param user
+ * @return {user obj}
+ */
 const setUserInterestsInfo = (user) => {
     const userInterestTagsInfo = document.getElementsByClassName('interest__tag');
     for (let interestTag of userInterestTagsInfo) {
@@ -36,6 +59,12 @@ const setUserInterestsInfo = (user) => {
     return user
 };
 
+/**
+ * 입력값을 바탕으로 유저의 약관과 관련된 필드를 채워주는 함수
+ *
+ * @param user
+ * @return {user obj}
+ */
 const setUserContractInfo = (user) => {
     const userContractInfo = document.getElementById('user_contract_checkbox');
     user.contract = userContractInfo.checked;

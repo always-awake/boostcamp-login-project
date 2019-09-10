@@ -1,5 +1,8 @@
 import {checkInterestsValidation} from '../check/checkValidation.js';
 
+/**
+ * 관심사 Input Div의 이벤트를 설정하는 함수
+ */
 const setInterestsEvent = () => {
     const userInterests = [];
     const interestInput = document.getElementById('user_interest_input');
@@ -45,6 +48,11 @@ const setInterestsEvent = () => {
     });
 
     // Backspace를 이용해 관심사 태그 수정 및 삭제 로직
+
+    /**
+     *
+     * @type {HTMLElement}
+     */
     const interestTagsDiv = document.getElementById('interest_tags');
     interestInput.addEventListener('keydown', (event) => {
         if (event.key === "Backspace" && userInterests.length !== 0 && interestInput.value === '') {

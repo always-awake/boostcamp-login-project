@@ -2,6 +2,9 @@ import {signupHeader} from '../../components/signup/header.js';
 import {signupForm} from '../../components/signup/form.js';
 import {setEvent} from '../setEvent/setEvent.js';
 
+/**
+ * 회원가입 HTML을 렌더링 하는 함수
+ */
 const makeSignUpHTML = () => {
     const signUpHead = document.getElementById('head');
     const signUpBody = document.getElementById('body');
