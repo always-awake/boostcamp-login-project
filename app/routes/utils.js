@@ -28,9 +28,45 @@ const deleteOldSession = (pk) => {
         .write();
 };
 
+const findUserById = (id) => {
+    return users.get('users')
+        .find({ id: id })
+        .value();
+};
+
+const saveUser = (user) => {
+    users.get('users')
+        .push(user)
+        .write();
+    users.update('count', n => n + 1)
+        .write();
+};
+
+const saveSession = (session) => {
+    sessions.get('sessions')
+        .push(session)
+        .write();
+};
+
+const deleteSession = (sessionId) => {
+    sessions.get('sessions')
+        .remove({ sessionId: sessionId })
+        .write();
+};
+
+const getSession = (sessionId) => {
+    return sessions.get('sessions')
+        .find({ sessionId: sessionId })
+        .value();
+};
 
 module.exports = {
     makeSession,
     getUser,
     deleteOldSession,
+    findUserById,
+    saveUser,
+    saveSession,
+    deleteSession,
+    getSession
 };

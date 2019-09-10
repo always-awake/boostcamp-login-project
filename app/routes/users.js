@@ -1,51 +1,42 @@
 const express = require('express');
 const router = express.Router();
 const {users} = require('../db/settings/users.js');
-const {sessions} = require('../db/settings/sessions.js');
 const uuidv4 = require('uuid/v4');
-const {makeSession, getUser, deleteOldSession} = require('./utils.js');
+const {makeSession, getUser, deleteOldSession, findUserById, saveUser, saveSession, deleteSession} = require('./utils.js');
 
 
-// 아이디 중복체크
+/**
+ * 아이디를 중복체크하는 로직
+ */
 router.get('/:id', function(req, res) {
     const idToCheck = req.params.id;
-    const user = users.get('users')
-        .find({ id: idToCheck })
-        .value();
+    const user = findUserById(idToCheck);
+
     if (user !== undefined) {
-        res.json(
-            {
+        res.json({
                 status: 200,
                 duplication: true,
-            }
-        )
+            })
     } else {
-        res.json(
-            {
+        res.json({
                 status: 200,
                 duplication: false
-            }
-        )
+            })
     }
 });
 
-// 회원가입
-router.post('/', function(req, res, next) {
+/**
+ * 회원가입 요청을 처리하는 로직
+ */
+router.post('/', function(req, res) {
     try {
         req.body['pk'] = users.get('count');
         const user = req.body;
-        users.get('users')
-            .push(req.body)
-            .write();
-        users.update('count', n => n + 1)
-            .write();
+        saveUser(user);
 
         const sessionId = uuidv4();
         const session = makeSession(sessionId, user);
-
-        sessions.get('sessions')
-            .push(session)
-            .write();
+        saveSession(session);
 
         if (!req.cookies.user_auth) {
             res.cookie('user_auth', sessionId, {
@@ -68,18 +59,18 @@ router.post('/', function(req, res, next) {
   }
 });
 
-// 최초 로그인
+/**
+ * 유저의 최초 로그인을 처리하는 로직
+ */
 router.post('/login', function(req, res, next) {
     const validUser = getUser(req.body['id'], req.body['pw']);
     try {
         if (validUser !== undefined) {
             deleteOldSession(validUser.pk);
+
             const sessionId = uuidv4();
             const session = makeSession(sessionId, validUser);
-
-            sessions.get('sessions')
-                .push(session)
-                .write();
+            saveSession(session);
 
             if (!req.cookies.user_auth) {
                 res.cookie('user_auth', sessionId, {
@@ -109,18 +100,18 @@ router.post('/login', function(req, res, next) {
 
 });
 
-// 유저 로그아웃
-router.post('/logout', function (req, res, next) {
-    sessions.get('sessions')
-        .remove({ sessionId: req.signedCookies.user_auth })
-        .write();
+/**
+ * 로그아웃을 처리하는 로직
+ */
+router.post('/logout', function (req, res) {
+    const sessionId = req.signedCookies.user_auth;
+
+    deleteSession(sessionId);
     res.clearCookie('user_auth');
-    res.json(
-        {
+    res.json({
             status: 200,
             msg: 'Logout Success'
-        }
-    )
+        })
 });
 
 
